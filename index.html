@@ -185,8 +185,11 @@
           
             
           
-          #
+          HTTP 篇2.2 HTTP/1.1如何优化
+减少HTTP请求次数
 
+缓存
+服务器在返回资源的时候，同时返回一个预估的过期时间，客户端以URL作为key，资源作为value的形式存储在本地。在此访问同URL时，先查询本地磁盘，如果存在：若未过期，直接返回资源；否则，再次发起请求，并附带本地过期资源的摘要，若服务器发现资源未变动，直接返回不含有包体的 304 Not Modified 响应，告诉客户
         </a>
       </p>
 
@@ -318,13 +321,6 @@
             
           </div>
         
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
-            
-          </div>
         
       </div>
     </article>
