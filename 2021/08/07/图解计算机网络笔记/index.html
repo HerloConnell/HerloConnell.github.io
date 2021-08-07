@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      28
        分钟
     </span>
   
@@ -318,14 +318,26 @@
 <p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记2.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><strong>1. 客户端发出请求（ClientHello）</strong></p>
 <p>客户端向服务器发出加密通信的请求，称为ClientHello请求，客户端主要向服务器提供以下信息：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">（<span class="hljs-number">1</span>） 支持的协议版本，比如TLS <span class="hljs-number">1.0</span>版。<br>（<span class="hljs-number">2</span>） 一个客户端生成的随机数<span class="hljs-built_in">Client</span> random，稍后用于生成<span class="hljs-string">&quot;对话密钥&quot;</span>。<br>（<span class="hljs-number">3</span>） 支持的加密方法，比如RSA公钥加密。<br>（<span class="hljs-number">4</span>） 支持的压缩方法。<br></code></pre></td></tr></table></figure>
+<p class="note note-primary">
+  （1） 支持的协议版本，比如TLS 1.0版。
+  <br>
+  （2） 一个客户端生成的随机数Client random，稍后用于生成"对话密钥"。
+  <br>
+  （3） 支持的加密方法，比如RSA公钥加密。
+  <br>
+  （4） 支持的压缩方法。
+</p>
+
+<p>（1） 支持的协议版本，比如TLS 1.0版。<br>（2） 一个客户端生成的随机数Client random，稍后用于生成”对话密钥”。<br>（3） 支持的加密方法，比如RSA公钥加密。<br>（4） 支持的压缩方法。</p>
 <p><strong>2. 服务器回应（SeverHello）</strong></p>
 <p>服务器的回应包含以下内容：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino">（<span class="hljs-number">1</span>） 确认使用的加密通信协议版本，比如TLS <span class="hljs-number">1.0</span>版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。<br>（<span class="hljs-number">2</span>） 一个服务器生成的随机数<span class="hljs-built_in">Server</span> random，稍后用于生成<span class="hljs-string">&quot;对话密钥&quot;</span>。<br>（<span class="hljs-number">3</span>） 确认使用的加密方法，比如RSA公钥加密。<br>（<span class="hljs-number">4</span>） 服务器证书。<br></code></pre></td></tr></table></figure>
+<p>（1） 确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。<br>（2） 一个服务器生成的随机数Server random，稍后用于生成”对话密钥”。<br>（3） 确认使用的加密方法，比如RSA公钥加密。<br>（4） 服务器证书。</p>
 <p><strong>3. 客户端回应</strong></p>
 <p>客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。</p>
 <p>如果证书没有问题，客户端就会从证书中取出服务器的公钥。然后，向服务器发送下面三项信息。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">（1） 一个随机数。该随机数用服务器公钥加密，防止被窃听。<br><br>（2） 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。<br><br>（3） 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的<span class="hljs-built_in">hash</span>值，用来供服务器校验。<br></code></pre></td></tr></table></figure>
+<p>（1） 一个随机数。该随机数用服务器公钥加密，防止被窃听。</p>
+<p>（2） 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。</p>
+<p>（3） 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。</p>
 <p>此外，如果前一步，服务器要求客户端证书，客户端会在这一步发送证书及相关信息。</p>
 <p>上面第一项的随机数，是整个握手阶段出现的第三个随机数，又称”pre-master key”。有了它以后，客户端和服务器就同时有了三个随机数，接着双方就用事先商定的加密方法，各自生成本次会话所用的同一把”会话密钥”。</p>
 <p>值得注意的是，该过程之前的阶段均为明文传输；而pre-master key使用服务器公钥加密，之后客户端与服务器端均生成会话密钥，数据传输均为加密传输。</p>
