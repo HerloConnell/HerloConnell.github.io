@@ -60,7 +60,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      3k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      32
        分钟
     </span>
   
@@ -319,40 +319,80 @@
 <p><strong>1. 客户端发出请求（ClientHello）</strong></p>
 <p>客户端向服务器发出加密通信的请求，称为ClientHello请求，客户端主要向服务器提供以下信息：</p>
 <p class="note note-secondary">
-  （1） 支持的协议版本，比如TLS 1.0版。
+  （1）支持的协议版本，比如TLS 1.0版。
   <br>
-  （2） 一个客户端生成的随机数Client random，稍后用于生成"对话密钥"。
+  （2）一个客户端生成的随机数Client random，稍后用于生成"对话密钥"。
   <br>
-  （3） 支持的加密方法，比如RSA公钥加密。
+  （3）支持的加密方法，比如RSA公钥加密。
   <br>
-  （4） 支持的压缩方法。
+  （4）支持的压缩方法。
 </p>
 
-<p>（1） 支持的协议版本，比如TLS 1.0版。<br>（2） 一个客户端生成的随机数Client random，稍后用于生成”对话密钥”。<br>（3） 支持的加密方法，比如RSA公钥加密。<br>（4） 支持的压缩方法。</p>
 <p><strong>2. 服务器回应（SeverHello）</strong></p>
 <p>服务器的回应包含以下内容：</p>
-<p>（1） 确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。<br>（2） 一个服务器生成的随机数Server random，稍后用于生成”对话密钥”。<br>（3） 确认使用的加密方法，比如RSA公钥加密。<br>（4） 服务器证书。</p>
+<p class="note note-secondary">
+  （1）确认使用的加密通信协议版本，比如TLS 1.0版本。如果浏览器与服务器支持的版本不一致，服务器关闭加密通信。
+  <br>
+  （2）一个服务器生成的随机数Server random，稍后用于生成"对话密钥"。
+  <br>
+  （3）确认使用的加密方法，比如RSA公钥加密。
+  <br>
+  （4）服务器证书。
+</p>
+
 <p><strong>3. 客户端回应</strong></p>
 <p>客户端收到服务器回应以后，首先验证服务器证书。如果证书不是可信机构颁布、或者证书中的域名与实际域名不一致、或者证书已经过期，就会向访问者显示一个警告，由其选择是否还要继续通信。</p>
 <p>如果证书没有问题，客户端就会从证书中取出服务器的公钥。然后，向服务器发送下面三项信息。</p>
-<p>（1） 一个随机数。该随机数用服务器公钥加密，防止被窃听。</p>
-<p>（2） 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。</p>
-<p>（3） 客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。</p>
-<p>此外，如果前一步，服务器要求客户端证书，客户端会在这一步发送证书及相关信息。</p>
+<p class="note note-secondary">
+  （1）一个随机数。该随机数用服务器公钥加密，防止被窃听。
+  <br>
+  （2）编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+  <br>
+  （3）客户端握手结束通知，表示客户端的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供服务器校验。
+</p>
+
+<p> 此外，如果前一步，服务器要求客户端证书，客户端会在这一步发送证书及相关信息。</p>
 <p>上面第一项的随机数，是整个握手阶段出现的第三个随机数，又称”pre-master key”。有了它以后，客户端和服务器就同时有了三个随机数，接着双方就用事先商定的加密方法，各自生成本次会话所用的同一把”会话密钥”。</p>
 <p>值得注意的是，该过程之前的阶段均为明文传输；而pre-master key使用服务器公钥加密，之后客户端与服务器端均生成会话密钥，数据传输均为加密传输。</p>
 <p><strong>4. 服务器的最后回应</strong></p>
 <p>服务器收到客户端的第三个随机数pre-master key之后，计算生成本次会话所用的”会话密钥”。然后，向客户端最后发送下面信息。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">（1）编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。<br><br>（2）服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的<span class="hljs-built_in">hash</span>值，用来供客户端校验。<br></code></pre></td></tr></table></figure>
+<p class="note note-secondary">
+  （1）编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送。
+  <br>
+  （2）服务器握手结束通知，表示服务器的握手阶段已经结束。这一项同时也是前面发送的所有内容的hash值，用来供客户端校验。
+</p>
+
 <p>至此，整个握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用”会话密钥”加密内容。</p>
 <p>使用 RSA密钥协商算法的最大问题是不支持前向保密。整个握手阶段都不加密（也没法加密），都是明文的。如果有人窃听通信，他可以知道双方选择的加密方法，以及三个随机数中的两个。整个通话的安全，只取决于第三个随机数（Premaster secret）能不能被破解。所以一旦服务端的私钥泄漏 了，过去被第三方截获的所有 TLS 通讯密文都会被破解。</p>
-<h3 id="基于ECDHE加密的SSL-TSL握手"><a href="#基于ECDHE加密的SSL-TSL握手" class="headerlink" title="基于ECDHE加密的SSL/TSL握手"></a>基于ECDHE加密的SSL/TSL握手</h3><p>参考资料</p>
+<h3 id="基于ECDHE加密的SSL-TSL握手"><a href="#基于ECDHE加密的SSL-TSL握手" class="headerlink" title="基于ECDHE加密的SSL/TSL握手"></a>基于ECDHE加密的SSL/TSL握手</h3><p><strong>离散对数</strong></p>
+<p>假定 a, p 均是素数，下面两个集合相等，证明过程请参考 <a target="_blank" rel="noopener" href="http://www.amazon.com/Cryptography-Network-Security-Principles-Practice/dp/0133354695">Cryptography and Network Security</a> 第八章：</p>
+<div class="code-wrapper"><pre><code class="hljs ada">&#123; a^<span class="hljs-number">1</span> <span class="hljs-keyword">mod</span> p, a^<span class="hljs-number">2</span> <span class="hljs-keyword">mod</span> p, ..., a^(p-<span class="hljs-number">1</span>) <span class="hljs-keyword">mod</span> p &#125; = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, ... , p-<span class="hljs-number">1</span> &#125;   &#123;&#125; 表示集合</code></pre></div>
+<p>上述式子可概括成以下三点，对于 1 &lt;= x,y &lt;= p - 1，有：</p>
+<ul>
+<li>a^x mod p 一定属于 {1, 2, …, p -1 }</li>
+<li>如果 x != y，则 a^x mod p != a^y mod p</li>
+<li>对于 1 &lt;= b &lt;= p - 1，一定存在唯一的 1 &lt;= x &lt;= p-1，使得 b = a^x mod p</li>
+</ul>
+<p>第三点在求解上有这么一个特点：已知 x 求 b 非常容易，已知 b 求 x 非常困难，特别当 p 很大时，求解的复杂度非常高，所以它又被称为离散对数问题 (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Discrete_logarithm">Discrete logarithm</a>)，它是 DH 算法能够安全交换密钥的基础</p>
+<p><strong>求模公式</strong></p>
+<p>假设 q 为素数，对于正整数 a,x,y，有：</p>
+<div class="code-wrapper"><pre><code class="hljs livecodeserver">(<span class="hljs-keyword">a</span>^x <span class="hljs-keyword">mod</span> p)^y <span class="hljs-keyword">mod</span> p = <span class="hljs-keyword">a</span>^(xy) <span class="hljs-keyword">mod</span> p</code></pre></div>
+<p>证明如下：</p>
+<div class="code-wrapper"><pre><code class="hljs excel">令 a^x = mp + <span class="hljs-built_in">n</span>， 其中 m, <span class="hljs-built_in">n</span> 为自然数， <span class="hljs-number">0</span> &lt;= <span class="hljs-built_in">n</span> &lt; p，则有
+C = (a^x <span class="hljs-built_in">mod</span> p)^y <span class="hljs-built_in">mod</span> p
+  = ((mp + <span class="hljs-built_in">n</span>) <span class="hljs-built_in">mod</span> p)^y <span class="hljs-built_in">mod</span> p
+  = <span class="hljs-built_in">n</span>^y <span class="hljs-built_in">mod</span> p
+  = (mp +<span class="hljs-built_in">n</span>)^y <span class="hljs-built_in">mod</span> p
+  = a^(xy) <span class="hljs-built_in">mod</span> p</code></pre></div>
+<h4 id="Deffie-Hellman-算法"><a href="#Deffie-Hellman-算法" class="headerlink" title="Deffie-Hellman 算法"></a>Deffie-Hellman 算法</h4><p>​    </p>
+<p>参考资料</p>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">阮一峰.RSA算法原理（一）</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">阮一峰.SSL/TLS协议运行机制的概述</a></p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bUy220-ect00N4gnO0697A">小林coding.图解 HTTP 常见的面试题</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html">阮一峰.数字签名是什么</a></p>
 <p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2006/12/notes_on_cryptography.html">阮一峰.密码学笔记</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000024523772">编程指北.加密、数字签名和数字证书</a></p>
+<p><a target="_blank" rel="noopener" href="http://wsfdl.com/algorithm/2016/02/04/理解Diffie-Hellman密钥交换算法.html">koala bear.理解 Deffie-Hellman 密钥交换算法</a></p>
 
             </div>
             <hr>
