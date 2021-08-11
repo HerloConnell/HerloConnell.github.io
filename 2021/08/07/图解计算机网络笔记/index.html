@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.9k 字
+      4.7k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      52
        分钟
     </span>
   
@@ -465,6 +465,43 @@ C = (a^x mod p)^y mod p
 <p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2006/12/notes_on_cryptography.html">阮一峰.密码学笔记</a></p>
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000024523772">编程指北.加密、数字签名和数字证书</a></p>
 <p><a target="_blank" rel="noopener" href="http://wsfdl.com/algorithm/2016/02/04/理解Diffie-Hellman密钥交换算法.html">koala bear.理解 Deffie-Hellman 密钥交换算法</a></p>
+<h1 id="TCP-篇"><a href="#TCP-篇" class="headerlink" title="TCP 篇"></a>TCP 篇</h1><p>TCP是<code>面向连接</code>的、<code>可靠</code>的、<code>基于字节流</code>的传输层通信协议。</p>
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><p>在介绍三次握手的过程之前，需要了解TCP头部的一些知识</p>
+<p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记4.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><code>源端口</code>和目的端口：确定主机中的进程；</li>
+<li>序号(seq)：报文段中的的第一个数据字节在数据流中的序号，主要用来解决网络报乱序的问题；</li>
+<li>确认号(ack_seq)：所期望收到的下一个数据包的序号；</li>
+<li>ACK：1有效，表示已经收到数据包</li>
+<li>RST：1有效，连接复位请求</li>
+<li>SYN：1有效，表示申请与接收方建立连接</li>
+<li>FIN：1有效，表示申请与接收方断开连接</li>
+</ul>
+<blockquote>
+<p>在Google Groups的<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/pongba">TopLanguage</a>中看到一帖讨论TCP“三次握手”觉得很有意思。贴主提出“<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/pongba/kF6O7-MFxM0/discussion">TCP建立连接为什么是三次握手？</a>”的问题，在众多回复中，有<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!msg/pongba/kF6O7-MFxM0/5S7zIJ4yqKUJ">一条回复</a>写道：“这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致. 而要解决这个问题, 无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足”在不可靠信道上可靠地传输信息”这一需求所导致的. 请注意这里的本质需求,信道不可靠, 数据传输要可靠. 三次达到了, 那后面你想接着握手也好, 发数据也好, 跟进行可靠信息传输的需求就没关系了. 因此,如果信道是可靠的, 即无论什么时候发出消息, 对方一定能收到, 或者你不关心是否要保证对方收到你的消息, 那就能像UDP那样直接发送消息就可以了.”。</p>
+</blockquote>
+<p>网络中A与B要建立TCP连接，可以分为以下四步：</p>
+<div class="code-wrapper"><pre><code class="hljs no">（1）A请求向B发送消息
+（2）B向A表示同意
+（3）B请求向A发送消息
+（4）A向B表示同意</code></pre></div>
+<p>可以发现，由于(2)(3)过程均为B向A发送消息，所以合为一次握手，实际上TCP建立连接只需要三次握手即可。</p>
+<p>接下来介绍三次握手的具体过程</p>
+<p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记5.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
+<p class="note note-secondary">
+  （1）A发送SYN=1，seq初始化为随机值X的连接请求报文段，之后进入SYN_SEND状态；
+  <br>
+  （2）收到连接请求前，B可以认为处于LISTEN阶段；收到连接请求后，B向A发送一个响应+请求报文段，置ACK=1，SYN=1，ack_seq=X+1，seq初始化为随机值Y，B进入SYN_RCVD状态；
+  <br>
+  （3）A响应B的连接请求，向B发送一个ACK=1的报文段，置seq=X+第一次握手报文长度1，ack_seq=Y，之后A进入ESTABLISHED状态；
+  <br>
+  （4）B收到A响应后同样进入ESTABLISHED状态，连接建立完成。
+</p>
+
+
+
+<h2 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/11/TCP三次握手简介/">Jiar.TCP三次握手简介</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/24/TCP四次挥手简介/">Jiar.TCP四次挥手简介</a></p>
 
             </div>
             <hr>
