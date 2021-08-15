@@ -306,21 +306,21 @@ hexo d   <span class="hljs-meta">#开始部署</span></code></pre></div>
 <h1 id="Fluid主题"><a href="#Fluid主题" class="headerlink" title="Fluid主题"></a>Fluid主题</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo主题网站</a>，<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></p>
 <ol>
 <li><p>在<code>/blogs/themes</code>中</p>
-<div class="code-wrapper"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/fluid-dev/</span>hexo-theme-fluid.git</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/fluid-dev/hexo-theme-fluid.git</code></pre></div>
 </li>
 <li><p>将<code>hexo-theme-fluid</code>文件夹更名为<code>fluid</code>，并修改hexo的<code>_config.yml</code></p>
-<div class="code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">theme:</span> fluid</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">theme:</span> <span class="hljs-string">fluid</span></code></pre></div>
 </li>
 <li><p>参考<code>Fluid</code>主题配置进行配置，如配置<code>Latex</code>支持等（注：<code>Latex</code>需要在文章 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Front-matter (opens new window)</a>里指定 <code>math: true</code> 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度）</p>
 </li>
 </ol>
 <h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><p><strong>错误一：443</strong></p>
-<div class="code-wrapper"><pre><code class="hljs vim">fatal unable <span class="hljs-keyword">to</span> access http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span> LibreSSL SSL_connect SSL_ERROR_SYSCALL in connection <span class="hljs-keyword">to</span> github.<span class="hljs-keyword">com</span> <span class="hljs-number">443</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs bash">fatal unable to access https://github.com LibreSSL SSL_connect SSL_ERROR_SYSCALL <span class="hljs-keyword">in</span> connection to github.com 443</code></pre></div>
 <p>科学上网的换个节点或者多提交几次即可</p>
 <p><strong>错误二：403</strong></p>
-<div class="code-wrapper"><pre><code class="hljs stata">remote: Support <span class="hljs-keyword">for</span> password authentication was removed <span class="hljs-keyword">on</span> August 13, 2021. Please <span class="hljs-keyword">use</span> a <span class="hljs-keyword">personal</span> access <span class="hljs-keyword">token</span> instead.
-remote: Please see https:<span class="hljs-comment">//github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.</span>
-fatal: unable to access &#x27;https:<span class="hljs-comment">//github.com/HerloConnell/HerloConnell.github.io.git/&#x27;: The requested URL returned error: 403</span></code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs bash">remote: Support <span class="hljs-keyword">for</span> password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ <span class="hljs-keyword">for</span> more information.
+fatal: unable to access <span class="hljs-string">&#x27;https://github.com/HerloConnell/HerloConnell.github.io.git/&#x27;</span>: The requested URL returned error: 403</code></pre></div>
 <p>2021年8月13后 GitHub 不能再用密码pull/push 需要使用令牌。</p>
 <ul>
 <li><p>进入 Github —&gt; Settings —&gt; Developer settings —&gt; Personal access tokens获得一个token，这里作用域我点的全选。</p>
