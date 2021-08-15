@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.7k 字
+      5.2k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      52
+      58
        分钟
     </span>
   
@@ -466,7 +466,7 @@ C = (a^x mod p)^y mod p
 <p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000024523772">编程指北.加密、数字签名和数字证书</a></p>
 <p><a target="_blank" rel="noopener" href="http://wsfdl.com/algorithm/2016/02/04/理解Diffie-Hellman密钥交换算法.html">koala bear.理解 Deffie-Hellman 密钥交换算法</a></p>
 <h1 id="TCP-篇"><a href="#TCP-篇" class="headerlink" title="TCP 篇"></a>TCP 篇</h1><p>TCP是<code>面向连接</code>的、<code>可靠</code>的、<code>基于字节流</code>的传输层通信协议。</p>
-<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><p>在介绍三次握手的过程之前，需要了解TCP头部的一些知识</p>
+<h2 id="TCP头部"><a href="#TCP头部" class="headerlink" title="TCP头部"></a>TCP头部</h2><p>在介绍三次握手，四次挥手的过程之前，需要了解TCP头部的一些知识</p>
 <p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记4.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li><code>源端口</code>和目的端口：确定主机中的进程；</li>
@@ -477,7 +477,7 @@ C = (a^x mod p)^y mod p
 <li>SYN：1有效，表示申请与接收方建立连接</li>
 <li>FIN：1有效，表示申请与接收方断开连接</li>
 </ul>
-<blockquote>
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><blockquote>
 <p>在Google Groups的<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/pongba">TopLanguage</a>中看到一帖讨论TCP“三次握手”觉得很有意思。贴主提出“<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/pongba/kF6O7-MFxM0/discussion">TCP建立连接为什么是三次握手？</a>”的问题，在众多回复中，有<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!msg/pongba/kF6O7-MFxM0/5S7zIJ4yqKUJ">一条回复</a>写道：“这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致. 而要解决这个问题, 无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足”在不可靠信道上可靠地传输信息”这一需求所导致的. 请注意这里的本质需求,信道不可靠, 数据传输要可靠. 三次达到了, 那后面你想接着握手也好, 发数据也好, 跟进行可靠信息传输的需求就没关系了. 因此,如果信道是可靠的, 即无论什么时候发出消息, 对方一定能收到, 或者你不关心是否要保证对方收到你的消息, 那就能像UDP那样直接发送消息就可以了.”。</p>
 </blockquote>
 <p>网络中A与B要建立TCP连接，可以分为以下四步：</p>
@@ -498,8 +498,24 @@ C = (a^x mod p)^y mod p
   （4）B收到A响应后同样进入ESTABLISHED状态，连接建立完成。
 </p>
 
+<h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记6.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>挥手过程，A与B断开连接之后，B可能还会有需要发个A的数据，不能立刻断开连接，需要有一个CLOSE_WAIT的过程，不能合为三次。</p>
+<p class="note note-secondary">
+  （1）A将FIN置为1，ACK置为1，seq设置为X=上一次对方传送过来的ack_seq，ack_seq设置为Y=为上一次对方传过来的seq+1。将数据发送至B，然后A进入FIN_WAIT_1状态；
+  <br>
+  （2）B收到了A发送的FIN报文段，向A回复，将ACK置为1，seq设置为Y，ack_seq设置为X+1。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态；
+  <br>
+  （3）B再次向A发送报文，FIN置为1，ACK置为1，seq设置为Y，ack_seq设置为X+1，然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态；
+  <br>
+  （4）A收到B发送的FIN报文段，向B回复，ACK置为1，seq设置为X+1，ack_seq设置为Y+1。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态。A在发送完报文等待了2MSL时间后进入CLOSED状态。
+</p>
 
-
+<p><strong>为什么 TIME_WAIT 状态要等待 2MSL 之后才关闭连接</strong></p>
+<ul>
+<li>2MSL表示两个MSL的时长，MSL全称为Maximum Segment Life，表示TCP Segment 生存时间的限制。</li>
+<li>为了保证A发送的最后一个ACK报文段能够到达B。这个ACK报文段有可能丢失，因而使处在LAST_ACK状态的B收不到对自己已发送的FIN+ACK报文段的确认。B会超时重传这个FIN+ACK报文段。而A就能在2MSL时间内收到这个重传的FIN+ACK报文段。接着A重传一次确认，重新启动2MSL计时器。最后A和B都正常进入到CLOSED状态。如果A在TIME_WAIT状态不等待一段时间，而是在发送完ACK报文段后立即释放连接，那么就无法收到B重传的FIN+ACK报文段，因而也不会在发送一次确认报文段。这样，B就无法按照正常步骤进入CLOSED状态。</li>
+<li>使下一个新的连接中不会出现这种旧的连接请求报文段。A在发送完最后一个ACK报文段后，在经过2MSL，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失。</li>
+</ul>
 <h2 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/11/TCP三次握手简介/">Jiar.TCP三次握手简介</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/24/TCP四次挥手简介/">Jiar.TCP四次挥手简介</a></p>
 
