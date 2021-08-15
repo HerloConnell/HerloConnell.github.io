@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      777 字
+      922 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      13
        分钟
     </span>
   
@@ -224,29 +224,29 @@
 <li><p>安装Homebrew</p>
 </li>
 <li><p>安装node.js</p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">brew install <span class="hljs-keyword">node</span><span class="hljs-title"></span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs crmsh">brew install <span class="hljs-keyword">node</span><span class="hljs-title"></span></code></pre></div>
 </li>
 <li><p>安装git</p>
 <ul>
 <li><p>一种方法是安装Xcode</p>
 </li>
 <li><p>另一种方法是</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>git<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs mipsasm"><span class="hljs-keyword">brew </span><span class="hljs-keyword">install </span>git</code></pre></div>
 </li>
 </ul>
 </li>
 <li><p>使用 npm 安装 hexo</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">npm install -g hexo-<span class="hljs-keyword">cli</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs avrasm">npm install -g hexo-<span class="hljs-keyword">cli</span></code></pre></div>
 </li>
 </ol>
 <h1 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h1><ol>
 <li><p>在某位置新建blogs文件夹，如<code>～/Documents/blogs</code>，并<code>cd</code>入该文件夹</p>
 </li>
 <li><p>博客初始化，这一步会在<code>blogs</code>中生成一些配置文件</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs csharp">hexo <span class="hljs-keyword">init</span></code></pre></div>
 </li>
 <li><p>进行本地预览</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo s</span></code></pre></div>
 </li>
 <li><p>在<code>http://localhost:4000</code>进行预览，看到HEXO的<code>hello world</code>界面即为成功</p>
 </li>
@@ -255,40 +255,83 @@
 <li><code>Enter file in which to save the key</code>时直接按回车，即在默认位置生成ssh文件，即<code>/Users/xxx/.ssh/id_rsa.pub</code></li>
 <li><code>Enter passphrase</code>时直接回车即不需要密码，如设置密码，该密码为push时需要的密码，与github账户密码等无关</li>
 </ul>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs gradle">% git config --global user.name <span class="hljs-string">&quot;github账户名，大小写敏感&quot;</span>                   <br>% git config --global user.email <span class="hljs-string">&quot;github账户邮箱&quot;</span><br>% ssh-keygen -t rsa -C <span class="hljs-string">&quot;github账户邮箱&quot;</span><br>Generating <span class="hljs-keyword">public</span>/<span class="hljs-keyword">private</span> rsa key pair.<br>Enter <span class="hljs-keyword">file</span> in which to save the key (<span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa): <br>Created directory <span class="hljs-string">&#x27;/Users/lihan/.ssh&#x27;</span>.<br>Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): <br>Enter same passphrase again: <br>Your identification has been saved in <span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa.<br>Your <span class="hljs-keyword">public</span> key has been saved in <span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub.<br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs gradle">% git config --global user.name <span class="hljs-string">&quot;github账户名，大小写敏感&quot;</span>                   
+% git config --global user.email <span class="hljs-string">&quot;github账户邮箱&quot;</span>
+% ssh-keygen -t rsa -C <span class="hljs-string">&quot;github账户邮箱&quot;</span>
+Generating <span class="hljs-keyword">public</span>/<span class="hljs-keyword">private</span> rsa key pair.
+Enter <span class="hljs-keyword">file</span> in which to save the key (<span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa): 
+Created directory <span class="hljs-string">&#x27;/Users/lihan/.ssh&#x27;</span>.
+Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in <span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa.
+Your <span class="hljs-keyword">public</span> key has been saved in <span class="hljs-regexp">/Users/</span>xxx<span class="hljs-regexp">/.ssh/i</span>d_rsa.pub.
+</code></pre></div>
 <p>生成文件之后，复制<code>id_rsa.pub</code>中的内容，这就是需要的key；登陆github -&gt; setting -&gt; SSH and GPG keys -&gt; New SSH key，将key复制粘贴，Title可以取名为设备名</p>
 <h1 id="本地博客关联到Github主页"><a href="#本地博客关联到Github主页" class="headerlink" title="本地博客关联到Github主页"></a>本地博客关联到Github主页</h1><ol>
 <li><p>登录Github并且创建一个名字为 <code>username.github.io</code> 的仓库，如<code>HerloConnell.github.io</code>，选择<code>Public</code></p>
 </li>
 <li><p>修改<code>blogs/_config.yml</code>的<code>deploy</code>，注意这里使用的是分支master</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> https:<span class="hljs-comment">//github.com/HerloConnell/HerloConnell.github.io.git</span><br><span class="hljs-symbol">  branch:</span> master<br></code></pre></td></tr></table></figure>
+<p><strong>在8.13号以后git需要使用令牌，repo设置稍有改动，具体见错误2</strong></p>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://github.com/HerloConnell/HerloConnell.github.io.git</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre></div>
 </li>
 <li><p>将博客push到GitHub</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span>
+<span class="hljs-attribute">hexo d</span></code></pre></div>
 </li>
 <li><p>在该仓库的<code>settings</code>中选择<code>GitHub Pages</code>,点击<code>heck it out here!</code>，显示</p>
-<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs delphi">Your site <span class="hljs-keyword">is</span> <span class="hljs-keyword">published</span> at https:<span class="hljs-comment">//herloconnell.github.io/</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs delphi">Your site <span class="hljs-keyword">is</span> <span class="hljs-keyword">published</span> at https:<span class="hljs-comment">//herloconnell.github.io/</span></code></pre></div>
 <p>在<code>Source</code>处选择<code>Branch:master</code></p>
 </li>
 <li><p>再次执行下面的代码，此时应该可以在<code>https://herloconnell.github.io/</code>看到Hexo界面</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span><br><span class="hljs-attribute">hexo d</span><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">hexo g</span>
+<span class="hljs-attribute">hexo d</span></code></pre></div>
 </li>
 </ol>
-<h1 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h1><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs axapta">hexo n <span class="hljs-string">&quot;博客名称&quot;</span>  =&gt; hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;博客名称&quot;</span>   <span class="hljs-meta">#这两个都是创建新文章，前者是简写模式</span><br>hexo p  =&gt; hexo publish<br>hexo g  =&gt; hexo generate  <span class="hljs-meta">#生成</span><br>hexo s  =&gt; hexo <span class="hljs-keyword">server</span>  <span class="hljs-meta">#启动服务预览</span><br>hexo d  =&gt; hexo deploy  <span class="hljs-meta">#部署  </span><br><br>hexo <span class="hljs-keyword">server</span>   <span class="hljs-meta">#Hexo 会监视文件变动并自动更新，无须重启服务器。</span><br>hexo <span class="hljs-keyword">server</span> -s   <span class="hljs-meta">#静态模式</span><br>hexo <span class="hljs-keyword">server</span> -p <span class="hljs-number">5000</span>   <span class="hljs-meta">#更改端口</span><br>hexo <span class="hljs-keyword">server</span> -i <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>   <span class="hljs-meta">#自定义IP</span><br>hexo clean   <span class="hljs-meta">#清除缓存，网页正常情况下可以忽略此条命令</span><br>hexo g   <span class="hljs-meta">#生成静态网页</span><br>hexo d   <span class="hljs-meta">#开始部署</span><br></code></pre></td></tr></table></figure>
+<h1 id="hexo常用命令"><a href="#hexo常用命令" class="headerlink" title="hexo常用命令"></a>hexo常用命令</h1><div class="code-wrapper"><pre><code class="hljs axapta">hexo n <span class="hljs-string">&quot;博客名称&quot;</span>  =&gt; hexo <span class="hljs-keyword">new</span> <span class="hljs-string">&quot;博客名称&quot;</span>   <span class="hljs-meta">#这两个都是创建新文章，前者是简写模式</span>
+hexo p  =&gt; hexo publish
+hexo g  =&gt; hexo generate  <span class="hljs-meta">#生成</span>
+hexo s  =&gt; hexo <span class="hljs-keyword">server</span>  <span class="hljs-meta">#启动服务预览</span>
+hexo d  =&gt; hexo deploy  <span class="hljs-meta">#部署  </span>
+
+hexo <span class="hljs-keyword">server</span>   <span class="hljs-meta">#Hexo 会监视文件变动并自动更新，无须重启服务器。</span>
+hexo <span class="hljs-keyword">server</span> -s   <span class="hljs-meta">#静态模式</span>
+hexo <span class="hljs-keyword">server</span> -p <span class="hljs-number">5000</span>   <span class="hljs-meta">#更改端口</span>
+hexo <span class="hljs-keyword">server</span> -i <span class="hljs-number">192.168</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>   <span class="hljs-meta">#自定义IP</span>
+hexo clean   <span class="hljs-meta">#清除缓存，网页正常情况下可以忽略此条命令</span>
+hexo g   <span class="hljs-meta">#生成静态网页</span>
+hexo d   <span class="hljs-meta">#开始部署</span></code></pre></div>
 <h1 id="Fluid主题"><a href="#Fluid主题" class="headerlink" title="Fluid主题"></a>Fluid主题</h1><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo主题网站</a>，<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></p>
 <ol>
 <li><p>在<code>/blogs/themes</code>中</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/fluid-dev/</span>hexo-theme-fluid.git<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/fluid-dev/</span>hexo-theme-fluid.git</code></pre></div>
 </li>
 <li><p>将<code>hexo-theme-fluid</code>文件夹更名为<code>fluid</code>，并修改hexo的<code>_config.yml</code></p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">theme:</span> fluid<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs avrasm"><span class="hljs-symbol">theme:</span> fluid</code></pre></div>
 </li>
 <li><p>参考<code>Fluid</code>主题配置进行配置，如配置<code>Latex</code>支持等（注：<code>Latex</code>需要在文章 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">Front-matter (opens new window)</a>里指定 <code>math: true</code> 才会在文章页启动公式转换，以便在页面不包含公式时提高加载速度）</p>
 </li>
 </ol>
-<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><p>如果git提交出错，出现</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">fatal unable <span class="hljs-keyword">to</span> access http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span> LibreSSL SSL_connect SSL_ERROR_SYSCALL in connection <span class="hljs-keyword">to</span> github.<span class="hljs-keyword">com</span> <span class="hljs-number">443</span><br></code></pre></td></tr></table></figure>
-<p>科学上网的换个节点或者多提交几次即可</p>
+<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><ol>
+<li><p>```<br>fatal unable to access <a target="_blank" rel="noopener" href="https://github.com">https://github.com</a> LibreSSL SSL_connect SSL_ERROR_SYSCALL in connection to github.com 443</p>
+<div class="code-wrapper"><pre><code class="hljs stata">
+   科学上网的换个节点或者多提交几次即可
+
+2. ```
+   remote: Support <span class="hljs-keyword">for</span> password authentication was removed <span class="hljs-keyword">on</span> August 13, 2021. Please <span class="hljs-keyword">use</span> a <span class="hljs-keyword">personal</span> access <span class="hljs-keyword">token</span> instead.
+   remote: Please see https:<span class="hljs-comment">//github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.</span>
+   fatal: unable to access &#x27;https:<span class="hljs-comment">//github.com/HerloConnell/HerloConnell.github.io.git/&#x27;: The requested URL returned error: 403</span></code></pre></div>
+<p>2021年8月13后 GitHub 不能再用密码推/拉 需要使用令牌。</p>
+<p>进入 Github —&gt; Settings —&gt; Developer settings —&gt; Personal access tokens获得一个token，这里作用域我点的全选。</p>
+<p>修改blogs/__config.yml中的repo：</p>
+<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repo:</span> <span class="hljs-string">https://&lt;Token&gt;@github.com/HerloConnell/HerloConnell.github.io.git</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">master</span></code></pre></div>
+</li>
+</ol>
 
             </div>
             <hr>
