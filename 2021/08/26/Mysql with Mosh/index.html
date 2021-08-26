@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>Mysql - Code with Mosh笔记 - Herlo&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":3},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Herlo's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                Category
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                Links
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.svg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mysql - Code with Mosh笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-26 13:04" pubdate>
+        2021年8月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mysql - Code with Mosh笔记</h1>
+            
+            <div class="markdown-body">
+              <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="HomeBrew安装Mysql"><a href="#HomeBrew安装Mysql" class="headerlink" title="HomeBrew安装Mysql"></a>HomeBrew安装Mysql</h2><div class="code-wrapper"><pre><code class="hljs vbnet">lihan@LideMacBook-Air ~ % brew install mysql
+==&gt; Installing mysql
+==&gt; Summary
+🍺  /opt/homebrew/Cellar/mysql/<span class="hljs-number">8.0</span>.<span class="hljs-number">26</span>: <span class="hljs-number">303</span> files, <span class="hljs-number">296.7</span>MB
+==&gt; mysql
+We<span class="hljs-comment">&#x27;ve installed your MySQL database without a root password. To secure it run:</span>
+    mysql_secure_installation
+
+MySQL <span class="hljs-built_in">is</span> configured <span class="hljs-keyword">to</span> only allow connections <span class="hljs-keyword">from</span> localhost <span class="hljs-keyword">by</span> <span class="hljs-keyword">default</span>
+
+<span class="hljs-keyword">To</span> connect run:
+    mysql -uroot
+
+<span class="hljs-keyword">To</span> have launchd start mysql now <span class="hljs-built_in">and</span> restart at login:
+  brew services start mysql
+<span class="hljs-built_in">Or</span>, <span class="hljs-keyword">if</span> you don<span class="hljs-comment">&#x27;t want/need a background service you can just run:</span>
+  mysql.server start
+lihan@LideMacBook-Air ~ % mysql.server start
+Starting MySQL
+.. SUCCESS! 
+lihan@LideMacBook-Air ~ % mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Connecting <span class="hljs-keyword">to</span> MySQL <span class="hljs-keyword">using</span> a blank password.
+
+VALIDATE PASSWORD COMPONENT can be used <span class="hljs-keyword">to</span> test passwords
+<span class="hljs-built_in">and</span> improve security. It checks the strength <span class="hljs-keyword">of</span> password
+<span class="hljs-built_in">and</span> allows the users <span class="hljs-keyword">to</span> <span class="hljs-keyword">set</span> only those passwords which are
+secure enough. Would you <span class="hljs-built_in">like</span> <span class="hljs-keyword">to</span> setup VALIDATE PASSWORD component?
+
+Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No: y
+
+There are three levels <span class="hljs-keyword">of</span> password validation policy:
+
+LOW    Length &gt;= <span class="hljs-number">8</span>
+MEDIUM Length &gt;= <span class="hljs-number">8</span>, numeric, mixed <span class="hljs-keyword">case</span>, <span class="hljs-built_in">and</span> special characters
+STRONG Length &gt;= <span class="hljs-number">8</span>, numeric, mixed <span class="hljs-keyword">case</span>, special characters <span class="hljs-built_in">and</span> dictionary                  file
+
+Please enter <span class="hljs-number">0</span> = LOW, <span class="hljs-number">1</span> = MEDIUM <span class="hljs-built_in">and</span> <span class="hljs-number">2</span> = STRONG: <span class="hljs-number">2</span>
+Please <span class="hljs-keyword">set</span> the password <span class="hljs-keyword">for</span> root here.
+
+<span class="hljs-built_in">New</span> password: 
+
+Re-enter <span class="hljs-built_in">new</span> password: 
+
+Estimated strength <span class="hljs-keyword">of</span> the password: <span class="hljs-number">100</span> 
+<span class="hljs-keyword">Do</span> you wish <span class="hljs-keyword">to</span> <span class="hljs-keyword">continue</span> <span class="hljs-keyword">with</span> the password provided?(Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No) : y
+<span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span>, a MySQL installation has an anonymous user,
+allowing anyone <span class="hljs-keyword">to</span> log <span class="hljs-keyword">into</span> MySQL without having <span class="hljs-keyword">to</span> have
+a user account created <span class="hljs-keyword">for</span> them. This <span class="hljs-built_in">is</span> intended only <span class="hljs-keyword">for</span>
+testing, <span class="hljs-built_in">and</span> <span class="hljs-keyword">to</span> make the installation go a bit smoother.
+You should remove them before moving <span class="hljs-keyword">into</span> a production
+environment.
+
+Remove anonymous users? (Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No) : y
+Success.
+
+
+Normally, root should only be allowed <span class="hljs-keyword">to</span> connect <span class="hljs-keyword">from</span>
+<span class="hljs-comment">&#x27;localhost&#x27;. This ensures that someone cannot guess at</span>
+the root password <span class="hljs-keyword">from</span> the network.
+
+Disallow root login remotely? (Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No)  n    
+ ... skipping.
+<span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span>, MySQL comes <span class="hljs-keyword">with</span> a database named <span class="hljs-comment">&#x27;test&#x27; that</span>
+anyone can access. This <span class="hljs-built_in">is</span> also intended only <span class="hljs-keyword">for</span> testing,
+<span class="hljs-built_in">and</span> should be removed before moving <span class="hljs-keyword">into</span> a production
+environment.
+
+
+Remove test database <span class="hljs-built_in">and</span> access <span class="hljs-keyword">to</span> it? (Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges <span class="hljs-keyword">on</span> test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will <span class="hljs-keyword">take</span> effect immediately.
+
+Reload privilege tables now? (Press y|Y <span class="hljs-keyword">for</span> Yes, any other <span class="hljs-keyword">key</span> <span class="hljs-keyword">for</span> No) : y
+Success.
+
+All done! 
+lihan@LideMacBook-Air ~ % mysql -u root -p
+Enter password: 
+Welcome <span class="hljs-keyword">to</span> the MySQL monitor.  Commands <span class="hljs-keyword">end</span> <span class="hljs-keyword">with</span> ; <span class="hljs-built_in">or</span> \g.
+Your MySQL connection id <span class="hljs-built_in">is</span> <span class="hljs-number">11</span>
+Server version: <span class="hljs-number">8.0</span>.<span class="hljs-number">26</span> Homebrew
+
+Copyright (c) <span class="hljs-number">2000</span>, <span class="hljs-number">2021</span>, Oracle <span class="hljs-built_in">and</span>/<span class="hljs-built_in">or</span> its affiliates.
+
+Oracle <span class="hljs-built_in">is</span> a registered trademark <span class="hljs-keyword">of</span> Oracle Corporation <span class="hljs-built_in">and</span>/<span class="hljs-built_in">or</span> its
+affiliates. Other names may be trademarks <span class="hljs-keyword">of</span> their respective
+owners.
+
+Type <span class="hljs-comment">&#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span>
+
+mysql&gt; <span class="hljs-keyword">exit</span>;
+Bye</code></pre></div>
+<h2 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h2><div class="code-wrapper"><pre><code class="hljs awk">链接：https:<span class="hljs-regexp">//</span>pan.baidu.com<span class="hljs-regexp">/s/</span><span class="hljs-number">1</span>xDsDWFLiRITYTT6HoFb7Tw 
+提取码：s5iz</code></pre></div>
+<p>注意存放位置如果有中文路径可能会在之后报<code>error 2</code>错误</p>
+<p>在<code>source</code>后直接拖入<code>sql</code>文件即可</p>
+<div class="code-wrapper"><pre><code class="hljs gherkin">mysql&gt; create database mydatabase;
+Query OK, 1 row affected (0.01 sec)
+
+mysql&gt; use mydatabase
+Database changed
+mysql&gt; source /Users/lihan/Desktop/summer/create-databases.sql 
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+....
+mysql&gt; show databases;
++--------------------+
+|<span class="hljs-string"> Database           </span>|
++--------------------+
+|<span class="hljs-string"> information_schema </span>|
+|<span class="hljs-string"> mydatabase         </span>|
+|<span class="hljs-string"> mysql              </span>|
+|<span class="hljs-string"> performance_schema </span>|
+|<span class="hljs-string"> sql_hr             </span>|
+|<span class="hljs-string"> sql_inventory      </span>|
+|<span class="hljs-string"> sql_invoicing      </span>|
+|<span class="hljs-string"> sql_store          </span>|
+|<span class="hljs-string"> sys                </span>|
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql&gt; drop database mydatabase;
+Query OK, 0 rows affected (0.01 sec)</code></pre></div>
+<h1 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h1><ul>
+<li>Mysql大小写不分，建议大写关键字，小写其他内容</li>
+<li>在行前使用<code>--</code>表示注释</li>
+<li>每个语句后使用<code>;</code>表示结束</li>
+<li>可以使用算术表达式</li>
+<li>可以使用<code>AS</code>关键字为列取别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">USE sql_store;
+SELECT first_name, point * 10 + 100 AS `discount_factor`
+FROM customers
+-- WHERE custom_id = 1
+ORDER BY first_name;</code></pre></div>
+<ul>
+<li><code>DISTINCT</code>可以删除重复项， <em>重复</em>是以列的组合判断的，<code>DISTINCT</code>必须放在开头</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT DISTINCT state 
+FROM customers</code></pre></div>
+<ul>
+<li><code>WHERE</code>中对于文本需要使用单引号或双引号，文本大小写不敏感</li>
+<li>注意此处的<code>Customers</code>与<code>va</code>均大小写不敏感</li>
+<li><code>!=</code> ，<code>&lt;&gt;</code>均意为不等于</li>
+<li>日期类型数据也需使用引号</li>
+<li>可以使用<code>AND</code>，<code>OR</code>，<code>NOT</code>创建复合条件语句</li>
+<li>条件语句中可以使用算数表达式</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM Customers
+WHERE state &lt;&gt; &#x27;va&#x27; 
+			AND birth_data &gt; &#x27;1990-01-01&#x27;</code></pre></div>
+<ul>
+<li><code>IN</code>关键字判断是否在集合中</li>
+<li><code>BETWEEN</code>关键字判断是否在闭区间内</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM customers
+WHERE state IN (&#x27;VA&#x27;, &#x27;FL&#x27;) 
+			AND points BETWEEN 1000 AND 2000</code></pre></div>
+<ul>
+<li><code>LIKE</code>关键字用于文本模糊匹配常用的有：<code>_</code>单一字符，<code>%</code>任意数目字符</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM customers
+WHERE last_name LIKE &#x27;%field%&#x27;</code></pre></div>
+<ul>
+<li><code>REGEXP</code>关键字使用正则表达式进行模糊匹配</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM customers
+WHERE last_name REGEXP &#x27;field&#x27;</code></pre></div>
+<ul>
+<li><code>NULL</code>表示空值</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM customers
+WHERE phone IS NOT NULL</code></pre></div>
+<ul>
+<li>结果集默认以主键为标准进行生序排序，使用<code>ORDER BY</code>关键字可以使用其他列为标准排序</li>
+<li>默认升序排序，使用<code>DESC</code>进行降序排序</li>
+<li>可以使用多个排序规则，越靠前优先级越高</li>
+<li>Mysql中允许用于排序的列不是结果集的列</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT first_name
+FROM customers
+ORDER BY state DESC, first_name DESC</code></pre></div>
+<ul>
+<li><code>LIMIT</code>关键字用于限制结果集大小，可用于网站分页</li>
+<li><code>LIMIT 3</code>代表结果集大小为3，<code>LIMIT 6, 3</code>代表跳过6行取3行</li>
+<li>注意<code>WHERE</code>，<code>ORDER BY</code>，<code>LIMIT</code>在语句中出现的先后顺序</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs mysql">SELECT *
+FROM customers
+WHERE state &lt;&gt; &#x27;va&#x27; 
+ORDER BY points DESC
+LIMIT 3</code></pre></div>
+<h1 id="多表连接"><a href="#多表连接" class="headerlink" title="多表连接"></a>多表连接</h1>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/07/%E5%9B%BE%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">图解计算机网络笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
