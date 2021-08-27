@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      4k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      58
        分钟
     </span>
   
@@ -327,12 +327,12 @@ Bye</code></pre></div>
 提取码：s5iz</code></pre></div>
 <p>注意存放位置如果有中文路径可能会在之后报<code>error 2</code>错误</p>
 <p>在<code>source</code>后直接拖入<code>sql</code>文件即可</p>
-<div class="code-wrapper"><pre><code class="hljs bash">mysql&gt; create database mydatabase;
+<div class="code-wrapper"><pre><code class="hljs no">mysql&gt; create database mydatabase;
 Query OK, 1 row affected (0.01 sec)
 
 mysql&gt; use mydatabase
 Database changed
-mysql&gt; <span class="hljs-built_in">source</span> /Users/lihan/Desktop/summer/create-databases.sql 
+mysql&gt; source /Users/lihan/Desktop/summer/create-databases.sql 
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 ....
 mysql&gt; show databases;
@@ -349,7 +349,7 @@ mysql&gt; show databases;
 | sql_store          |
 | sys                |
 +--------------------+
-9 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+9 rows in set (0.00 sec)
 
 mysql&gt; drop database mydatabase;
 Query OK, 0 rows affected (0.01 sec)</code></pre></div>
@@ -688,7 +688,7 @@ UPDATE invoices
     <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span><span class="hljs-operator">/</span>invoice_total<span class="hljs-operator">/</span>invoice_date) <span class="hljs-keyword">AS</span> number_of_invoices
 <span class="hljs-keyword">FROM</span> invoices
 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
-<span class="hljs-keyword">HAVING</span> total_sales <span class="hljs-operator">&gt;</span> <span class="hljs-number">500</span> <span class="hljs-keyword">AND</span> number_of_invoices <span class="hljs-operator">&gt;</span> <span class="hljs-number">5</span></code></pre></div>
+<span class="hljs-keyword">HAVING</span> total_sales <span class="hljs-operator">&gt;</span> <span class="hljs-number">500</span> <span class="hljs-keyword">AND</span> number_of_invoices <span class="hljs-operator">&gt;</span> <span class="hljs-number">5</span>;</code></pre></div>
 <ul>
 <li>Mysql提供了<code>ROLLUP</code>运算符对聚合值进行汇总，如下将返回各客户的发票总额以及所有人的总发票额</li>
 <li><code>ROLLUP</code>不是标准的SQL语言</li>
@@ -697,7 +697,7 @@ UPDATE invoices
     client_id,
     <span class="hljs-built_in">SUM</span>(invoice_total)
 <span class="hljs-keyword">FROM</span> invoices
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span></code></pre></div>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
 <ul>
 <li>当<code>GROUP BY</code>取多列时，<code>ROLLUP</code>可以进行多层汇总</li>
 <li>下面将返回各州的各市的发票总额以及州层次和全国层次的汇总额</li>
@@ -708,7 +708,7 @@ UPDATE invoices
     <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">AS</span> total_sales
 <span class="hljs-keyword">FROM</span> invoices
 <span class="hljs-keyword">JOIN</span> clients <span class="hljs-keyword">USING</span> (client_id) 
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> state, city <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span></code></pre></div>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> state, city <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
 <ul>
 <li>使用<code>ROLLUP</code>时，<code>GROUP BY</code>不能使用列别名</li>
 </ul>
@@ -718,7 +718,249 @@ UPDATE invoices
 <span class="hljs-keyword">FROM</span> payments p
 <span class="hljs-keyword">JOIN</span> payment_methods pm
     <span class="hljs-keyword">ON</span> p.payment_method <span class="hljs-operator">=</span> pm.payment_method_id
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pm.name <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span></code></pre></div>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pm.name <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
+<h1 id="编写复杂查询"><a href="#编写复杂查询" class="headerlink" title="编写复杂查询"></a>编写复杂查询</h1><ul>
+<li>Mysql将先执行括号内的子查询，之后将结果返回给外查询</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> unit_price <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> unit_price
+    <span class="hljs-keyword">FROM</span> products
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> product_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> product_id
+    <span class="hljs-keyword">FROM</span> order_items
+);</code></pre></div>
+<ul>
+<li>子查询将一张表的查询结果作为另一张表的查询依据并层层嵌套；链接将这些表合并成一个包含所需全部信息的详情表再直接在详情表里筛选查询；两种方法一般是可互换的，具体用哪一种取决于效率和可读性</li>
+<li>例：查找从未订购过的顾客，下面两种方法均可达到效果</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> invoices <span class="hljs-keyword">USING</span> (client_id)
+<span class="hljs-keyword">WHERE</span> invoices_id <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;</code></pre></div>
+<ul>
+<li>例：选出买过生菜（id = 3）的顾客的id，姓和名，采用混合子查询+表连接的方法</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> customer_id, first_name, last_name
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> customer_id <span class="hljs-keyword">IN</span> (  
+    <span class="hljs-keyword">SELECT</span> customer_id
+    <span class="hljs-keyword">FROM</span> orders
+    <span class="hljs-keyword">JOIN</span> order_items <span class="hljs-keyword">USING</span> (order_id)  
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+<ul>
+<li><code>ALL</code>关键字代表集合中的任意记录</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(invoice_total)
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ALL</span> (
+    <span class="hljs-keyword">SELECT</span> invoice_total
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+<ul>
+<li><p><code>ANY</code>关键字代表集合中存在某条记录，可与<code>MIN</code>等效</p>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ANY</span> (
+    <span class="hljs-keyword">SELECT</span> invoice_total
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(invoice_total)
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+</li>
+<li><p><code>ANY</code>某些时候也可与<code>IN</code>等效</p>
+</li>
+<li>例：选择至少有两次发票记录的顾客</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;=</span> <span class="hljs-number">2</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-keyword">ANY</span> ( 
+    <span class="hljs-keyword">SELECT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;=</span> <span class="hljs-number">2</span>
+);</code></pre></div>
+<ul>
+<li>在上面的子查询中，子查询与主查询无关，可以先进行完子查询，再进行主查询</li>
+<li>相关子查询，子查询与主查询有关</li>
+<li>例：返回各部门中工资超过该部门平均值的人，对于<code>employees e</code>中的每条记录，都将执行一次子查询</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> employees e  <span class="hljs-comment">-- 关键 1</span>
+<span class="hljs-keyword">WHERE</span> salary <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(salary)
+    <span class="hljs-keyword">FROM</span> employees
+    <span class="hljs-keyword">WHERE</span> office_id <span class="hljs-operator">=</span> e.office_id  <span class="hljs-comment">-- 关键 2</span>
+    <span class="hljs-comment">-- 【子查询表字段不用加前缀，主查询表的字段要加前缀，以此区分】</span>
+);</code></pre></div>
+<ul>
+<li><code>EXISTS</code>关键字如果集合不为空返回<code>TRUE</code>，否则返回<code>FALSE</code></li>
+<li><code>IN + 子查询</code> 等效于 <code>EXIST + 相关子查询</code>，如前者子查询结果集过大占用内存，后者逐条验证更有效率</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients c
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+    <span class="hljs-comment">-- 就这个子查询的目的来说，SELECT的选择不影响结果，</span>
+    <span class="hljs-comment">-- 因为EXISTS()函数只根据是否为空返回结果</span>
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id
+);</code></pre></div>
+<ul>
+<li><code>EXISTS()</code>返回的是 <code>TRUE/FALSE</code>，所以也可以加上<code>NOT</code>取反</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products 
+<span class="hljs-keyword">WHERE</span> product_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">FROM</span> order_items
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products p
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+    <span class="hljs-keyword">FROM</span> order_items
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> p.product_id
+);</code></pre></div>
+<ul>
+<li>例：经典题目，选择没有选所有课的学生</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择没有选所有课的学生</span>
+<span class="hljs-comment">-- 存在某一样课，该学生没有对应的选课记录</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> stu s
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span>(
+  	<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+  	<span class="hljs-keyword">FROM</span> class c
+  	<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>(
+      	<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+      	<span class="hljs-keyword">FROM</span> stu_class
+      	<span class="hljs-keyword">WHERE</span> stu_id <span class="hljs-operator">=</span> s.stu_id <span class="hljs-keyword">AND</span> class_id <span class="hljs-operator">=</span> c.class_id
+    )
+);</code></pre></div>
+<ul>
+<li>子查询或相关子查询也可用于<code>SELECT</code>中</li>
+<li>引用同级的列别名，需要使用<code>SELECT</code>，引用同级的列别名不需要说明来源</li>
+<li>下面的例子中有三个子查询，第一个为相关子查询，表示某顾客订单总量，第二个为子查询，表示所有订单平均值，第三个引用同级的列别名，表示前两者的差</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    client_id,
+    name,
+    (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id) <span class="hljs-keyword">AS</span> total_sales,
+    (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices) <span class="hljs-keyword">AS</span> average,
+    (<span class="hljs-keyword">SELECT</span> total_sales <span class="hljs-operator">-</span> average) <span class="hljs-keyword">AS</span> difference   
+<span class="hljs-keyword">FROM</span> clients c;</code></pre></div>
+<ul>
+<li>子查询也可用于<code>FROM</code>中</li>
+<li>当子查询太复杂时应使用视图将子查询结果储存起来，使用视图作为来源表</li>
+<li>在FROM中使用子查询，即使用 “派生表” 时，必须给派生表取个别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> 
+        client_id,
+        name,
+        (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id) <span class="hljs-keyword">AS</span> total_sales,
+        (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices) <span class="hljs-keyword">AS</span> average,
+        (<span class="hljs-keyword">SELECT</span> total_sales <span class="hljs-operator">-</span> average) <span class="hljs-keyword">AS</span> difference   
+    <span class="hljs-keyword">FROM</span> clients c
+) <span class="hljs-keyword">AS</span> sales_summury
+<span class="hljs-keyword">WHERE</span> total_sales <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;</code></pre></div>
+<h1 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h1><p>内置的用来处理数值、文本、日期等的函数</p>
+<ul>
+<li>数值函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> ROUND(<span class="hljs-number">5.7365</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">-- 四舍五入</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">TRUNCATE</span>(<span class="hljs-number">5.7365</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">-- 截断</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">CEILING</span>(<span class="hljs-number">5.2</span>)  <span class="hljs-comment">-- 天花板函数，大于等于此数的最小整数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">FLOOR</span>(<span class="hljs-number">5.6</span>)  <span class="hljs-comment">-- 地板函数，小于等于此数的最大整数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">ABS</span>(<span class="hljs-number">-5.2</span>)  <span class="hljs-comment">-- 绝对值</span>
+<span class="hljs-keyword">SELECT</span> RAND()  <span class="hljs-comment">-- 随机函数，0到1的随机值</span></code></pre></div>
+<ul>
+<li>字符串函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> LENGTH(<span class="hljs-string">&#x27;sky&#x27;</span>)  <span class="hljs-comment">-- 字符串字符个数</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">UPPER</span>(<span class="hljs-string">&#x27;sky&#x27;</span>)  <span class="hljs-comment">-- 转大写</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">LOWER</span>(<span class="hljs-string">&#x27;Sky&#x27;</span>)  <span class="hljs-comment">-- 转小写</span>
+
+<span class="hljs-keyword">SELECT</span> LTRIM(<span class="hljs-string">&#x27;  Sky&#x27;</span>)  <span class="hljs-comment">-- 去除左多余空格</span>
+<span class="hljs-keyword">SELECT</span> RTRIM(<span class="hljs-string">&#x27;Sky  &#x27;</span>)  <span class="hljs-comment">-- 去除右多余空格</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">TRIM</span>(<span class="hljs-string">&#x27; Sky &#x27;</span>)  <span class="hljs-comment">-- 去除多余空格</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">LEFT</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">4</span>)  <span class="hljs-comment">-- 取左4个字符</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">RIGHT</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">6</span>)  <span class="hljs-comment">-- 取右6个字符</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUBSTRING</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>)  <span class="hljs-comment">-- 从第7个开始长度为6的子串，省略长度参数则取到末端</span>
+
+<span class="hljs-keyword">SELECT</span> LOCATE(<span class="hljs-string">&#x27;gar&#x27;</span>, <span class="hljs-string">&#x27;Kindergarden&#x27;</span>)  <span class="hljs-comment">-- 定位首次出现的位置，没有的话返回0，不区分大小写</span>
+
+<span class="hljs-keyword">SELECT</span> REPLACE(<span class="hljs-string">&#x27;Kindergarten&#x27;</span>, <span class="hljs-string">&#x27;garten&#x27;</span>, <span class="hljs-string">&#x27;garden&#x27;</span>)  <span class="hljs-comment">-- 替换</span>
+
+<span class="hljs-keyword">SELECT</span> CONCAT(f_name, <span class="hljs-string">&#x27; &#x27;</span>, l_name) <span class="hljs-keyword">AS</span> f_name <span class="hljs-keyword">FROM</span> customers  <span class="hljs-comment">-- 连接</span></code></pre></div>
+<ul>
+<li>处理时间日期的函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 当前时间日期对象</span>
+<span class="hljs-keyword">SELECT</span> NOW()  <span class="hljs-comment">-- 2021-08-27 08:50:46</span>
+<span class="hljs-keyword">SELECT</span> CURDATE()  <span class="hljs-comment">-- 2021-08-27</span>
+<span class="hljs-keyword">SELECT</span> CURTIME()  <span class="hljs-comment">-- 08:50:46</span>
+
+<span class="hljs-comment">-- 提取时间日期对象中的元素</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">YEAR</span>(NOW())  <span class="hljs-comment">-- 2021</span>
+
+<span class="hljs-keyword">SELECT</span> DAYNAME(NOW())  <span class="hljs-comment">-- Saturday</span>
+<span class="hljs-keyword">SELECT</span> MONTHNAME(NOW())  <span class="hljs-comment">-- September</span></code></pre></div>
+<ul>
+<li>日期格式化，格式说明符里，大小写是不同的，这是目前SQL里第一次出现大小写不同的情况</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATE_FORMAT(NOW(), <span class="hljs-string">&#x27;%M %d, %Y&#x27;</span>)  <span class="hljs-comment">-- September 12, 2020</span>
+<span class="hljs-keyword">SELECT</span> TIME_FORMAT(NOW(), <span class="hljs-string">&#x27;%H:%i %p&#x27;</span>)  <span class="hljs-comment">-- 11:07 AM</span></code></pre></div>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE41147KC?p=34">伟大的海伦君.SQL进阶教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222865842">ASC2050.Mosh完全掌握SQL笔记</a></p>
 
