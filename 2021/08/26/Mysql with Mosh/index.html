@@ -451,16 +451,16 @@ LIMIT <span class="hljs-number">3</span>;</code></pre></div>
 <span class="hljs-keyword">JOIN</span> employees m
 		 <span class="hljs-keyword">WHERE</span> e.reports_to <span class="hljs-operator">=</span> m.employee_id;</code></pre></div>
 <ul>
-<li><p><code>JOIN</code>多次使用可以多表连接</p>
+<li><code>JOIN</code>多次使用可以多表连接</li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> orders o
 <span class="hljs-keyword">JOIN</span> customers c
-		<span class="hljs-keyword">ON</span> o.customer_id <span class="hljs-operator">=</span> c.customer_id
+<span class="hljs-keyword">ON</span> o.customer_id <span class="hljs-operator">=</span> c.customer_id
 <span class="hljs-keyword">JOIN</span> order_statuses os
-		<span class="hljs-keyword">ON</span> o.status <span class="hljs-operator">=</span> os.order_status_id;</code></pre></div>
-</li>
-<li><p><code>AND</code>创建复合连接条件</p>
-</li>
+<span class="hljs-keyword">ON</span> o.status <span class="hljs-operator">=</span> os.order_status_id;</code></pre></div>
+<ul>
+<li><code>AND</code>创建复合连接条件</li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> order_items oi
@@ -524,13 +524,13 @@ LIMIT <span class="hljs-number">3</span>;</code></pre></div>
 		<span class="hljs-comment">-- AND oi.product_id = oin.product_id;</span>
 		<span class="hljs-keyword">USING</span> (order_id, product_id);</code></pre></div>
 <ul>
-<li><p><code>NATURAL JOIN</code>自然连接，使用同名的属性组，并且在结果中把重复的属性列去掉，不建议使用</p>
+<li><code>NATURAL JOIN</code>自然连接，使用同名的属性组，并且在结果中把重复的属性列去掉，不建议使用</li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> orders o
 <span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> customers c;</code></pre></div>
-</li>
-<li><p><code>CROSS JOIN</code>交叉连接，返回笛卡尔积，即所有的组合结果</p>
-</li>
+<ul>
+<li><code>CROSS JOIN</code>交叉连接，返回笛卡尔积，即所有的组合结果</li>
 <li>第一句为显式写法，第二句为隐式写法</li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
@@ -540,14 +540,13 @@ LIMIT <span class="hljs-number">3</span>;</code></pre></div>
 <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> orders o, customers c;</code></pre></div>
 <ul>
-<li><p><code>UNION</code>联合查询结果，两次<code>SELECT</code>必须有相同的属性数，属性名以第一次查询为主进行整合</p>
+<li><code>UNION</code>联合查询结果，两次<code>SELECT</code>必须有相同的属性数，属性名以第一次查询为主进行整合</li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> first_name
 <span class="hljs-keyword">FROM</span> archived_orders
 <span class="hljs-keyword">UNION</span>
 <span class="hljs-keyword">SELECT</span> name
 <span class="hljs-keyword">FROM</span> orders;</code></pre></div>
-</li>
-</ul>
 <h1 id="插入、更新、删除"><a href="#插入、更新、删除" class="headerlink" title="插入、更新、删除"></a>插入、更新、删除</h1><ul>
 <li><code>INSERT INTO</code>插入单行</li>
 <li><code>DEFAULT</code>可用于存在默认值或递增的属性</li>
@@ -781,25 +780,25 @@ UPDATE invoices
     <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
 );</code></pre></div>
 <ul>
-<li><p><code>ANY</code>关键字代表集合中存在某条记录，可与<code>MIN</code>等效</p>
+<li><code>ANY</code>关键字代表集合中存在某条记录，可与<code>MIN</code>等效</li>
+</ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> invoices
 <span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ANY</span> (
-    <span class="hljs-keyword">SELECT</span> invoice_total
-    <span class="hljs-keyword">FROM</span> invoices
-    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+<span class="hljs-keyword">SELECT</span> invoice_total
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
 );
 
 <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
 <span class="hljs-keyword">FROM</span> invoices
 <span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> (
-    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(invoice_total)
-    <span class="hljs-keyword">FROM</span> invoices
-    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(invoice_total)
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
 );</code></pre></div>
-</li>
-<li><p><code>ANY</code>某些时候也可与<code>IN</code>等效</p>
-</li>
+<ul>
+<li><code>ANY</code>某些时候也可与<code>IN</code>等效</li>
 <li>例：选择至少有两次发票记录的顾客</li>
 </ul>
 <div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
