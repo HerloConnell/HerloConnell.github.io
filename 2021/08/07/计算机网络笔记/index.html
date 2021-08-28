@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>图解计算机网络笔记 - Herlo&#39;s Blog</title>
+  <title>计算机网络笔记 - Herlo&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -155,7 +155,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="图解计算机网络笔记">
+            <span class="h2" id="subtitle" title="计算机网络笔记">
               
             </span>
 
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.4k 字
+      9.7k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      91
+      105
        分钟
     </span>
   
@@ -217,10 +217,10 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图解计算机网络笔记</h1>
+            <h1 style="display: none">计算机网络笔记</h1>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文章原意是对《图解计算机网络》一书的笔记。但在阅读本书过程中，参考了网络上大量资料（每章参考资料在最后给出），已经不单单是“笔记”了。由于博客是基于我自己的知识基础，为了参加面试对网络资料进行整理得到的，可能不适用于希望对计算机网络有一个完整、大概认识的同学。</p>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文章原意是对《图解计算机网络》一书的笔记。但由于在阅读本书过程中，我又参考了网络上大量资料（每章参考资料在最后给出），已经不单单是“笔记”了。博客是基于我自己的知识基础，为了参加面试对网络资料进行整理得到的，可能不适用于希望对计算机网络有一个完整、大概认识的同学。</p>
 <h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>通过光缆、电缆、双绞线、无线电波等方式将电脑连接起来，将数据包转化为0和1的电信号进行传输，主要规定网络的一些电气特性。</p>
 <h2 id="链接层"><a href="#链接层" class="headerlink" title="链接层"></a>链接层</h2><p>链接层规定了0和1的分组方式，即如何解读获得的01串。</p>
 <p class="note note-primary">
@@ -306,32 +306,33 @@
 <p>应用软件在应用层实现，应用层只需要专注于为用户提供应用功能，不用去关心数据是如何传输的。当两个不同设备的应用需要通信的时候，应用就把应用数据传给下一层，也就是传输层。</p>
 <p>应用层工作在操作系统中的用户态，传输层及以下工作在内核态。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">阮一峰.互联网协议入门(一)</a></p>
-<h1 id="HTTP-篇"><a href="#HTTP-篇" class="headerlink" title="HTTP 篇"></a>HTTP 篇</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
-<li><p>HTTP 是超文本传输协议，也就是<strong>H</strong>yperText <strong>T</strong>ransfer <strong>P</strong>rotocol。</p>
-</li>
-<li><p><strong>常见的状态码</strong></p>
+<h1 id="HTTP-篇"><a href="#HTTP-篇" class="headerlink" title="HTTP 篇"></a>HTTP 篇</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>HTTP 是超文本传输协议，也就是<strong>H</strong>yperText <strong>T</strong>ransfer <strong>P</strong>rotocol。</p>
+<p class="note note-primary">
+  <b>常见的状态码</b>
+</p>
+
 <p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记3.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
-</li>
-<li><p><strong>http常⻅字段</strong></p>
-<div class="code-wrapper"><pre><code class="hljs yaml"><span class="hljs-string">客户端发送请求时：</span>
-<span class="hljs-attr">Host:</span> <span class="hljs-string">www.A.com</span>	<span class="hljs-string">指定服务器域名</span>
-<span class="hljs-attr">Connection:</span> <span class="hljs-string">keep-alive</span>	<span class="hljs-string">最常用于客户端要求服务器使用</span> <span class="hljs-string">TCP</span> <span class="hljs-string">持久连接，以便其他请求复用</span>
-<span class="hljs-attr">Accept:</span> <span class="hljs-string">*/*</span>	<span class="hljs-string">客户端声明自己可以接受哪些数据格式，*/*表示接受任何格式</span>
-<span class="hljs-attr">Accept-Encoding:</span> <span class="hljs-string">gzip,</span> <span class="hljs-string">deflate</span>	<span class="hljs-string">说明自己可以接受哪些压缩方法</span>
+<p class="note note-primary">
+  <b>http常⻅字段</b>
+</p> 
 
+<p>客户端发送请求时：</p>
+<div class="code-wrapper"><pre><code class="hljs no">Host: www.A.com	指定服务器域名
+Connection: keep-alive	最常用于客户端要求服务器使用 TCP 持久连接，以便其他请求复用
+Accept: */*	客户端声明自己可以接受哪些数据格式，*/*表示接受任何格式
+Accept-Encoding: gzip, deflate	说明自己可以接受哪些压缩方法</code></pre></div>
+<p>服务器响应请求时：</p>
+<div class="code-wrapper"><pre><code class="hljs no">Content-Length: 1000	表明本次回应的数据⻓度1000字节
+Content-Type: text/html; charset=utf-8	服务器表明自己发送的数据格式，发送的是网⻚，编码为UTF-8
+Content-Encoding: gzip 	表示服务器返回的数据使用gzip压缩格式</code></pre></div>
+<p class="note note-primary">
+  <b>GET与POST</b>
+</p> 
 
-<span class="hljs-string">服务器响应请求时：</span>
-<span class="hljs-attr">Content-Length:</span> <span class="hljs-number">1000</span>	<span class="hljs-string">表明本次回应的数据⻓度1000字节</span>
-<span class="hljs-attr">Content-Type:</span> <span class="hljs-string">text/html;</span> <span class="hljs-string">charset=utf-8</span>	<span class="hljs-string">服务器表明自己发送的数据格式，发送的是网⻚，编码为UTF-8</span>
-<span class="hljs-attr">Content-Encoding:</span> <span class="hljs-string">gzip</span> 	<span class="hljs-string">表示服务器返回的数据使用gzip压缩格式</span></code></pre></div>
-</li>
-<li><p><strong>GET与POST</strong></p>
 <p>Get请求从服务器获取资源；</p>
 <p>POST向 <strong>URI</strong> 指定的资源提交数据，数据就放在报文的 body 里，服务器响应代表处理结果。</p>
 <p><strong>安全</strong>指请求方法不会破坏服务器上的资源， <strong>幂等</strong>指多次执行相同的操作，结果都是相同的。</p>
 <p>GET方法就是安全且幂等的，POST是不安全的不幂等的。</p>
-</li>
-</ol>
 <h2 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a>HTTP/1.1</h2><p class="note note-primary">
   <b>HTTP/1.1特点</b>
 </p>
@@ -355,7 +356,7 @@
 <p>按需获取。请求网⻚的时候只获取当前用户所看到的⻚面资源，当用户向下滑动⻚面的时候，再向服务器获取接下来的资源。</p>
 </li>
 <li><p>减少HTTP响应数据大小</p>
-<p><span class="label label-primary">无损压缩、有损压缩</span></p>
+<p>无损压缩、有损压缩</p>
 </li>
 </ol>
 <h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><p>加密算法分为以下两种：</p>
@@ -606,7 +607,47 @@ C = (a^x mod p)^y mod p
 <p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/24/TCP四次挥手简介/">Jiar.TCP四次挥手简介</a></p>
 <h1 id="IP篇"><a href="#IP篇" class="headerlink" title="IP篇"></a>IP篇</h1><h1 id="网络安全篇"><a href="#网络安全篇" class="headerlink" title="网络安全篇"></a>网络安全篇</h1><h2 id="安全攻击分类"><a href="#安全攻击分类" class="headerlink" title="安全攻击分类"></a>安全攻击分类</h2><p><span class="label label-primary">被动攻击</span>：攻击者窃听监听数据传输，从而获取到传输的数据信息。主要有：消息内容泄露攻击和流量分析攻击。由于并没有修改数据，这种攻击是很难被检测到的。</p>
 <p><span class="label label-primary">主动攻击</span>：攻击者修改传输的数据流或者故意添加错误的数据流，如假冒用户身份从而得到一些权限，进行权限攻击，除此之外，还有重放、改写和拒绝服务等。</p>
-<h2 id="参考资料-3"><a href="#参考资料-3" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/detail/networks-interview-highlights/">Leetcode.计算机网络面试突击</a></p>
+<h2 id="ARP攻击"><a href="#ARP攻击" class="headerlink" title="ARP攻击"></a>ARP攻击</h2><p><strong>ARP 是一种非常不安全的协议</strong>，局域网上的任何一台主机如果接收到一个 ARP 应答报文，并不会去检测这个报文的真实性，而是直接记入自己的 ARP 缓存表中，当 ARP 表中的某一记录长时间不适使用，就会被删除。ARP 攻击就是利用了这一点，攻击者疯狂发送 ARP 报文，源 IP 地址为被攻击者的 IP 地址，而源 MAC 地址为攻击者的 MAC 地址。通过不断发送这些伪造的 ARP 报文，网络内部的主机和网关的 ARP 表中被攻击者的 IP 地址对应攻击者的 MAC 地址。所有发送给被攻击者的信息都会发送到攻击者的主机上，从而产生 ARP 欺骗。ARP 欺骗分为以下几种：</p>
+<ul>
+<li><strong>洪泛攻击</strong></li>
+</ul>
+<p>攻击者恶意向局域网中的网关、路由器和交换机等发送大量 ARP 报文，设备 CPU 忙于处理 ARP 协议，难以响应正常的服务请求。表现通常为：网络中断或者网速很慢。</p>
+<ul>
+<li><strong>欺骗主机</strong></li>
+</ul>
+<p>也叫仿冒网关攻击，攻击者通过 ARP 欺骗使得被攻击者 ARP 表中网关对应的 MAC 地址为攻击者的 MAC。这样一来被攻击者要通过网关发送出去的数据流就会发往攻击者这里，造成用户数据外泄。</p>
+<ul>
+<li><strong>欺骗网关</strong></li>
+</ul>
+<p>和欺骗主机的攻击方式类似，不过欺骗对象是局域网的网关。当局域网中的主机向网关发送数据时，网关会把数据发送给攻击者，该攻击方式同样会造成用户数据外泄。</p>
+<ul>
+<li><strong>中间人攻击</strong></li>
+</ul>
+<p>攻击者同时欺骗网关和主机，局域网的网关和主机发送的数据最后都会到达攻击者这边。这样，网关和用户的数据就会泄露。</p>
+<ul>
+<li><strong>IP 地址冲突</strong></li>
+</ul>
+<p>攻击者对局域网中的主机进行扫描，然后根据物理主机的 MAC 地址进行攻击，导致局域网内的主机产生 IP 冲突，使得用户的网络无法正常使用。</p>
+<h2 id="DDoS攻击"><a href="#DDoS攻击" class="headerlink" title="DDoS攻击"></a>DDoS攻击</h2><p>DDoS 全称 Distributed Denial of Service，分布式拒绝服务。一般来说是指攻击者利用不同位置上的“肉鸡”对目标网站在较短的时间内发起大量请求，大规模消耗目标网站的主机资源，让它无法正常服务。和单一的 DoS 攻击相比，DDoS 是借助数百台或者数千台已被入侵并添加了攻击进程的主机组成“僵尸网络”，一起发起网络攻击。</p>
+<p class="note note-primary">
+  <b>常见的 DDos 攻击</b>
+</p>
+
+<p>DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型，新的攻击方法还在不断发明出来。</p>
+<ul>
+<li><strong>SYN Flood</strong></li>
+</ul>
+<p>这是一种利用TCP协议缺陷，发送大量伪造的TCP连接请求，从而使得被攻击方资源耗尽（CPU满负荷或内存不足）的攻击方式。</p>
+<p>建立TCP连接，需要三次握手：客户端发送SYN报文，服务端收到请求并返回报文表示接受，客户端也返回确认，完成连接。如果客户端向服务器发送报文后死机或掉线，服务器在发出应答报文后就无法收到客户端的确认报文，这时服务器端一般会重试并等待一段时间后再丢弃这个未完成的连接。</p>
+<p>一个用户出现异常导致服务器的一个线程等待一会儿并不是大问题，但恶意攻击者大量模拟这种情况，服务器端为了维护数以万计的半连接而消耗非常多的资源，结果往往是无暇理睬客户的正常请求，甚至崩溃。从正常客户的角度看来，网站失去了响应，无法访问。</p>
+<ul>
+<li><strong>CC 攻击</strong></li>
+</ul>
+<p>CC攻击是目前应用层攻击的主要手段之一，攻击者送来大量正常的请求，超出服务器的最大承受量，导致宕机。借助代理服务器生成指向目标系统的合法请求，实现伪装和DDoS。我们都有这样的体验，访问一个静态页面，即使人多也不需要太长时间，但如果在高峰期访问论坛、贴吧等，那就很慢了，因为服务器系统需要到数据库中判断访问者否有读帖、发言等权限。访问的人越多，论坛的页面越多，数据库压力就越大，被访问的频率也越高，占用的系统资源也就相当可观。</p>
+<p>CC攻击就充分利用了这个特点，模拟多个正常用户不停地访问如论坛这些需要大量数据操作的页面，造成服务器资源的浪费，CPU长时间处于100%，永远都有处理不完的请求，网络拥塞，正常访问被中止。这种攻击技术性含量高，见不到真实源IP，见不到特别大的异常流量，但服务器就是无法进行正常连接。</p>
+<h2 id="参考资料-3"><a href="#参考资料-3" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/06/ddos.html">阮一峰.DDoS的防范教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/detail/networks-interview-highlights/">Leetcode.计算机网络面试突击</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22259175/answer/378530276">知道创宇.什么是DDoS攻击</a></p>
 
             </div>
             <hr>
