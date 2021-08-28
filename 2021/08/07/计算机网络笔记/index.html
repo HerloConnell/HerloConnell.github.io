@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.7k 字
+      10.9k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      105
+      117
        分钟
     </span>
   
@@ -220,7 +220,8 @@
             <h1 style="display: none">计算机网络笔记</h1>
             
             <div class="markdown-body">
-              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文章原意是对《图解计算机网络》一书的笔记。但由于在阅读本书过程中，我又参考了网络上大量资料（每章参考资料在最后给出），已经不单单是“笔记”了。博客是基于我自己的知识基础，为了参加面试对网络资料进行整理得到的，可能不适用于希望对计算机网络有一个完整、大概认识的同学。</p>
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本文原意是对《图解计算机网络》一书的笔记，但由于在阅读该书过程中，我又参考了网络上大量资料（每章参考资料在最后给出），已经不单单是“笔记”了。</p>
+<p>博客是基于我自己的知识基础，为了参加<strong>面试</strong>对资料进行整理得到的，如出现错误，欢迎与我联系。</p>
 <h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>通过光缆、电缆、双绞线、无线电波等方式将电脑连接起来，将数据包转化为0和1的电信号进行传输，主要规定网络的一些电气特性。</p>
 <h2 id="链接层"><a href="#链接层" class="headerlink" title="链接层"></a>链接层</h2><p>链接层规定了0和1的分组方式，即如何解读获得的01串。</p>
 <p class="note note-primary">
@@ -320,7 +321,8 @@
 <div class="code-wrapper"><pre><code class="hljs no">Host: www.A.com	指定服务器域名
 Connection: keep-alive	最常用于客户端要求服务器使用 TCP 持久连接，以便其他请求复用
 Accept: */*	客户端声明自己可以接受哪些数据格式，*/*表示接受任何格式
-Accept-Encoding: gzip, deflate	说明自己可以接受哪些压缩方法</code></pre></div>
+Accept-Encoding: gzip, deflate	说明自己可以接受哪些压缩方法
+User-Agent: 告诉网站服务器，访问者是通过什么工具来请求的，如使用Python爬虫时，该字段为python-requests/2.11.1</code></pre></div>
 <p>服务器响应请求时：</p>
 <div class="code-wrapper"><pre><code class="hljs no">Content-Length: 1000	表明本次回应的数据⻓度1000字节
 Content-Type: text/html; charset=utf-8	服务器表明自己发送的数据格式，发送的是网⻚，编码为UTF-8
@@ -543,7 +545,9 @@ C = (a^x mod p)^y mod p
 </ul>
 <p>通常情况下，a 一般为 2 或 5，而 p 的取值非常大，至少几百位，Xa 和 Xb 的取值也非常大，其复杂度至少为 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Pollard&#39;s_rho_algorithm_for_logarithms">O(p^0.5)</a>。对于攻击者来说，已知 Ya，Xa 的求解非常困难，同理 Xb 的求解也很困难，所以攻击者难以求出 K，所以 DH 能够保证通信双方在<strong>透明</strong>的信道中安全的交换密钥。</p>
 <p>DH 算法主要实现方法为<strong>DHE 算法</strong>，DHE 算法让双方的私钥在每次密钥交换通信时，都是随机生成的、临时的，E 全称是 ephemeral（临时性的）。这样就保证了 <strong>前向安全</strong>，即使曾经的通信过程被破解，不会影响现在的通信的安全性。</p>
-<h2 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">阮一峰.RSA算法原理（一）</a></p>
+<h2 id="参考资料-1"><a href="#参考资料-1" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9453579154e3">creepycool.User-Agent格式含义与示例</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c5cf6a1967d1">狗子渣渣.HTTP请求头之User-Agent</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html">阮一峰.RSA算法原理（一）</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html">阮一峰.SSL/TLS协议运行机制的概述</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">阮一峰.图解SSL/TLS协议</a></p>
 <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6895624327896432654#heading-9">洛禹Keith.TLS 详解握手流程</a></p>
@@ -564,10 +568,7 @@ C = (a^x mod p)^y mod p
 <li>SYN：1有效，表示申请与接收方建立连接</li>
 <li>FIN：1有效，表示申请与接收方断开连接</li>
 </ul>
-<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><blockquote>
-<p>在Google Groups的<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!forum/pongba">TopLanguage</a>中看到一帖讨论TCP“三次握手”觉得很有意思。贴主提出“<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!topic/pongba/kF6O7-MFxM0/discussion">TCP建立连接为什么是三次握手？</a>”的问题，在众多回复中，有<a target="_blank" rel="noopener" href="https://groups.google.com/forum/#!msg/pongba/kF6O7-MFxM0/5S7zIJ4yqKUJ">一条回复</a>写道：“这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致. 而要解决这个问题, 无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足”在不可靠信道上可靠地传输信息”这一需求所导致的. 请注意这里的本质需求,信道不可靠, 数据传输要可靠. 三次达到了, 那后面你想接着握手也好, 发数据也好, 跟进行可靠信息传输的需求就没关系了. 因此,如果信道是可靠的, 即无论什么时候发出消息, 对方一定能收到, 或者你不关心是否要保证对方收到你的消息, 那就能像UDP那样直接发送消息就可以了.”。</p>
-</blockquote>
-<p>网络中A与B要建立TCP连接，可以分为以下四步：</p>
+<h2 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h2><p>网络中A与B要建立TCP连接，可以分为以下四步：</p>
 <div class="code-wrapper"><pre><code class="hljs no">（1）A请求向B发送消息
 （2）B向A表示同意
 （3）B请求向A发送消息
@@ -575,29 +576,47 @@ C = (a^x mod p)^y mod p
 <p>可以发现，由于(2)(3)过程均为B向A发送消息，所以合为一次握手，实际上TCP建立连接只需要三次握手即可。</p>
 <p>接下来介绍三次握手的具体过程</p>
 <p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记5.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
-<p class="note note-secondary">
-  （1）A发送SYN=1，seq初始化为随机值X的连接请求报文段，之后进入SYN_SEND状态；
-  <br>
-  （2）收到连接请求前，B可以认为处于LISTEN阶段；收到连接请求后，B向A发送一个响应+请求报文段，置ACK=1，SYN=1，ack_seq=X+1，seq初始化为随机值Y，B进入SYN_RCVD状态；
-  <br>
-  （3）A响应B的连接请求，向B发送一个ACK=1的报文段，置seq=X+第一次握手报文长度1，ack_seq=Y，之后A进入ESTABLISHED状态；
-  <br>
-  （4）B收到A响应后同样进入ESTABLISHED状态，连接建立完成。
+<p>（1）A发送SYN=1，seq初始化为随机值X的连接请求报文段，之后进入SYN_SEND状态；<br>（2）收到连接请求前，B可以认为处于LISTEN阶段；收到连接请求后，B向A发送一个响应+请求报文段，置ACK=1，SYN=1，ack_seq=X+1，seq初始化为随机值Y，B进入SYN_RCVD状态；<br>（3）A响应B的连接请求，向B发送一个ACK=1的报文段，置seq=X+第一次握手报文长度1，ack_seq=Y，之后A进入ESTABLISHED状态；<br>（4）B收到A响应后同样进入ESTABLISHED状态，连接建立完成。</p>
+<p class="note note-primary">
+  <b>半连接队列与全连接队列</b>
 </p>
 
+<p>服务器第一次收到客户端的 <code>SYN</code> 之后，就会处于 <code>SYN_RCVD</code> 状态，此时双方还没有完全建立连接。服务器会把这种状态下的请求连接放在一个队列里，我们把这种队列称之为半连接队列。</p>
+<p>已经完成三次握手，建立起连接的就会放在全连接队列中。如果队列满了就有可能会出现丢包现象。</p>
+<p class="note note-primary">
+  <b>三次握手可以携带数据吗</b>
+</p>
+
+<p>第一次、第二次握手不可以携带数据，而第三次握手是可以携带数据的。</p>
+<p>假如第一次握手可以携带数据的话，如果有人要恶意攻击服务器，在第一次握手中的 SYN 报文中放入大量的数据，疯狂重复发 SYN 报文，这会让服务器花费大量的内存空间来缓存这些报文。</p>
+<p>对于第三次握手，此时客户端已经处于连接状态，他已经知道服务器的接收、发送能力是正常的了，所以可以携带数据是情理之中。</p>
+<p class="note note-primary">
+  <b>如果三次握手时每次握手信息对方没有收到</b>
+</p>
+
+<ul>
+<li>若第一次握手服务器未接收到客户端请求建立连接的数据包，客户端由于在一段时间内没有收到服务器发来的确认报文， 因此会重新发送 SYN 报文，若仍然没有回应，则重复上述过程直到发送次数超过最大重传次数限制后，建立连接的系统调用会返回 -1。</li>
+<li>若第二次握手客户端未接收到服务器回应的 ACK 报文时，客户端会采取第一次握手失败时的动作，而服务器端此时将阻塞在 accept() 系统调用处等待 client 再次发送 ACK 报文。</li>
+<li>若第三次握手服务器未接收到客户端发送过来的 ACK 报文，服务器端同样会采取类似于客户端的超时重传机制，若重传次数超过限制后仍然没有回应，则 accep() 系统调用返回 -1，服务器端连接建立失败。但此时客户端认为自己已经连接成功了，因此开始向服务器端发送数据，但是服务器端的 accept() 系统调用已返回，此时没有在监听状态。因此服务器端接收到来自客户端发送来的数据时会发送 RST 报文给 客户端，消除客户端单方面建立连接的状态。</li>
+</ul>
+<p class="note note-primary">
+  <b>为什么不可以两次握手</b>
+</p>
+
+<p>三次握手的主要目的是<strong>确认双方的收发能力</strong>。若采用两次握手，客户端能得出结论：服务端的接收、发送能力，客户端的接收、发送能力是正常的。但此时服务器并不能确认客户端的接收能力是否正常。</p>
+<p>如果客户端未接收到第二次握手的包，或是客户端收到该包之前已不想建立TCP连接，而服务器并不知情，如果没有第三次握手告诉服务器，服务器端的端口就会一直开着，若客户端因超时重新发出请求时，服务器就会重新开启一个端口连接。这样的端口越来越多，就会造成服务器开销的浪费。</p>
+<p class="note note-primary">
+  <b>如建立连接后客户端出现故障</b>
+</p>
+
+<p>TCP还设有一个保活计时器，显然，客户端如果出现故障，服务器不能一直等下去，白白浪费资源。服务器每收到一次客户端的请求后都会重新复位这个计时器，时间通常是设置为2小时，若两小时还没有收到客户端的任何数据，服务器就会发送一个探测报文段，以后每隔75秒发送一次。若一连发送10个探测报文仍然没反应，服务器就认为客户端出了故障，接着就关闭连接。</p>
 <h2 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h2><p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/图解计算机网络笔记6.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>挥手过程，A与B断开连接之后，B可能还会有需要发个A的数据，不能立刻断开连接，需要有一个CLOSE_WAIT的过程，不能合为三次。</p>
-<p class="note note-secondary">
-  （1）A将FIN置为1，ACK置为1，seq设置为X=上一次对方传送过来的ack_seq，ack_seq设置为Y=为上一次对方传过来的seq+1。将数据发送至B，然后A进入FIN_WAIT_1状态；
-  <br>
-  （2）B收到了A发送的FIN报文段，向A回复，将ACK置为1，seq设置为Y，ack_seq设置为X+1。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态；
-  <br>
-  （3）B再次向A发送报文，FIN置为1，ACK置为1，seq设置为Y，ack_seq设置为X+1，然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态；
-  <br>
-  （4）A收到B发送的FIN报文段，向B回复，ACK置为1，seq设置为X+1，ack_seq设置为Y+1。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态。A在发送完报文等待了2MSL时间后进入CLOSED状态。
+<p>（1）A将FIN置为1，ACK置为1，seq设置为X=上一次对方传送过来的ack_seq，ack_seq设置为Y=为上一次对方传过来的seq+1。将数据发送至B，然后A进入FIN_WAIT_1状态；<br>（2）B收到了A发送的FIN报文段，向A回复，将ACK置为1，seq设置为Y，ack_seq设置为X+1。然后B进入CLOSE_WAIT状态，A收到B的回复后，进入FIN_WAIT_2状态；<br>（3）B再次向A发送报文，FIN置为1，ACK置为1，seq设置为Y，ack_seq设置为X+1，然后B进入LAST_ACK状态，A收到B的报文后，进入TIME_WAIT状态；<br>（4）A收到B发送的FIN报文段，向B回复，ACK置为1，seq设置为X+1，ack_seq设置为Y+1。然后A进入TIME_WAIT状态，B在收到报文后进入CLOSED状态。A在发送完报文等待了2MSL时间后进入CLOSED状态。</p>
+<p class="note note-primary">
+  <b>为什么 TIME_WAIT 状态要等待 2MSL 之后才关闭连接</b>
 </p>
 
-<p><strong>为什么 TIME_WAIT 状态要等待 2MSL 之后才关闭连接</strong></p>
 <ul>
 <li>2MSL表示两个MSL的时长，MSL全称为Maximum Segment Life，表示TCP Segment 生存时间的限制。</li>
 <li>为了保证A发送的最后一个ACK报文段能够到达B。这个ACK报文段有可能丢失，因而使处在LAST_ACK状态的B收不到对自己已发送的FIN+ACK报文段的确认。B会超时重传这个FIN+ACK报文段。而A就能在2MSL时间内收到这个重传的FIN+ACK报文段。接着A重传一次确认，重新启动2MSL计时器。最后A和B都正常进入到CLOSED状态。如果A在TIME_WAIT状态不等待一段时间，而是在发送完ACK报文段后立即释放连接，那么就无法收到B重传的FIN+ACK报文段，因而也不会在发送一次确认报文段。这样，B就无法按照正常步骤进入CLOSED状态。</li>
@@ -605,7 +624,9 @@ C = (a^x mod p)^y mod p
 </ul>
 <h2 id="参考资料-2"><a href="#参考资料-2" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/11/TCP三次握手简介/">Jiar.TCP三次握手简介</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.jiar.me/2017/08/24/TCP四次挥手简介/">Jiar.TCP四次挥手简介</a></p>
-<h1 id="IP篇"><a href="#IP篇" class="headerlink" title="IP篇"></a>IP篇</h1><h1 id="网络安全篇"><a href="#网络安全篇" class="headerlink" title="网络安全篇"></a>网络安全篇</h1><h2 id="安全攻击分类"><a href="#安全攻击分类" class="headerlink" title="安全攻击分类"></a>安全攻击分类</h2><p><span class="label label-primary">被动攻击</span>：攻击者窃听监听数据传输，从而获取到传输的数据信息。主要有：消息内容泄露攻击和流量分析攻击。由于并没有修改数据，这种攻击是很难被检测到的。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qzcsu/article/details/72861891">小书go.TCP的三次握手与四次挥手</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/read/networks-interview-highlights/ek40dd/">Leetcode.计算机网络面试-传输层</a></p>
+<h1 id="网络安全篇"><a href="#网络安全篇" class="headerlink" title="网络安全篇"></a>网络安全篇</h1><h2 id="安全攻击分类"><a href="#安全攻击分类" class="headerlink" title="安全攻击分类"></a>安全攻击分类</h2><p><span class="label label-primary">被动攻击</span>：攻击者窃听监听数据传输，从而获取到传输的数据信息。主要有：消息内容泄露攻击和流量分析攻击。由于并没有修改数据，这种攻击是很难被检测到的。</p>
 <p><span class="label label-primary">主动攻击</span>：攻击者修改传输的数据流或者故意添加错误的数据流，如假冒用户身份从而得到一些权限，进行权限攻击，除此之外，还有重放、改写和拒绝服务等。</p>
 <h2 id="ARP攻击"><a href="#ARP攻击" class="headerlink" title="ARP攻击"></a>ARP攻击</h2><p><strong>ARP 是一种非常不安全的协议</strong>，局域网上的任何一台主机如果接收到一个 ARP 应答报文，并不会去检测这个报文的真实性，而是直接记入自己的 ARP 缓存表中，当 ARP 表中的某一记录长时间不适使用，就会被删除。ARP 攻击就是利用了这一点，攻击者疯狂发送 ARP 报文，源 IP 地址为被攻击者的 IP 地址，而源 MAC 地址为攻击者的 MAC 地址。通过不断发送这些伪造的 ARP 报文，网络内部的主机和网关的 ARP 表中被攻击者的 IP 地址对应攻击者的 MAC 地址。所有发送给被攻击者的信息都会发送到攻击者的主机上，从而产生 ARP 欺骗。ARP 欺骗分为以下几种：</p>
 <ul>
@@ -643,10 +664,30 @@ C = (a^x mod p)^y mod p
 <ul>
 <li><strong>CC 攻击</strong></li>
 </ul>
-<p>CC攻击是目前应用层攻击的主要手段之一，攻击者送来大量正常的请求，超出服务器的最大承受量，导致宕机。借助代理服务器生成指向目标系统的合法请求，实现伪装和DDoS。我们都有这样的体验，访问一个静态页面，即使人多也不需要太长时间，但如果在高峰期访问论坛、贴吧等，那就很慢了，因为服务器系统需要到数据库中判断访问者否有读帖、发言等权限。访问的人越多，论坛的页面越多，数据库压力就越大，被访问的频率也越高，占用的系统资源也就相当可观。</p>
-<p>CC攻击就充分利用了这个特点，模拟多个正常用户不停地访问如论坛这些需要大量数据操作的页面，造成服务器资源的浪费，CPU长时间处于100%，永远都有处理不完的请求，网络拥塞，正常访问被中止。这种攻击技术性含量高，见不到真实源IP，见不到特别大的异常流量，但服务器就是无法进行正常连接。</p>
+<p>CC攻击是目前应用层攻击的主要手段之一，攻击者模拟多个正常用户送来大量正常的请求，超出服务器的最大承受量，导致宕机。</p>
+<p class="note note-primary">
+  <b>防范 CC 攻击的方法</b>
+</p>
+
+<ul>
+<li><strong>拦截HTTP请求</strong></li>
+</ul>
+<p>如果恶意请求有特征，对付起来很简单：直接拦截它就行了。</p>
+<p>HTTP 请求的特征一般有两种：IP 地址和 User Agent 字段。比如，恶意请求都是从某个 IP 段发出的，那么把这个 IP 段封掉就行了。或者，它们的 User Agent 字段有特征（包含某个特定的词语），那就把带有这个词语的请求拦截。</p>
+<ul>
+<li><strong>带宽扩容</strong></li>
+</ul>
+<p>HTTP 拦截有一个前提，就是请求必须有特征。但是，真正的 DDOS 攻击是没有特征的，它的请求看上去跟正常请求一样，而且来自不同的 IP 地址，所以没法拦截。</p>
+<p>对于网站来说，如果可以在短时间内急剧扩容，提供几倍或几十倍的带宽，就可以顶住大流量的请求。这就是为什么云服务商可以提供防护产品，因为他们有大量冗余带宽，可以用来消化 DDoS 攻击。当有大量请求时，DNS 将访问量均匀分配到这四台镜像服务器。</p>
+<ul>
+<li><strong>CDN</strong></li>
+</ul>
+<p>CDN 指的是网站的静态内容分发到多个服务器，用户就近访问，提高速度。因此，CDN 也是带宽扩容的一种方法，可以用来防御 DDOS 攻击。</p>
+<p>网站内容存放在源服务器，CDN 上面是内容的缓存。用户只允许访问 CDN，如果内容不在 CDN 上，CDN 再向源服务器发出请求。这样的话，只要 CDN 够大，就可以抵御很大的攻击。不过，这种方法有一个前提，网站的大部分内容必须可以静态缓存。对于动态内容为主的网站（比如论坛），就要想别的办法，尽量减少用户对动态数据的请求。</p>
+<p>上一节提到的镜像服务器，本质就是自己搭建一个微型 CDN。各大云服务商提供的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/高防服务器">高防 IP</a>，背后也是这样做的：网站域名指向高防 IP，它提供一个缓冲层，清洗流量，并对源服务器的内容进行缓存。</p>
+<p>这里有一个关键点，使用 CDN，千万不要泄露源服务器的 IP 地址，否则攻击者可以绕过 CDN 直接攻击源服务器，前面的努力都白费。</p>
 <h2 id="参考资料-3"><a href="#参考资料-3" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/06/ddos.html">阮一峰.DDoS的防范教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/detail/networks-interview-highlights/">Leetcode.计算机网络面试突击</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/leetbook/read/networks-interview-highlights/ekb9m1/">Leetcode.计算机网络面试-网络安全</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22259175/answer/378530276">知道创宇.什么是DDoS攻击</a></p>
 
             </div>
