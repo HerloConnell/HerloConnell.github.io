@@ -230,7 +230,7 @@
 <li>$y_t$ 表示 t 时刻的输出向量 (通常是预测的结果)。</li>
 </ul>
 <center>    
-  <img height="40%" width="40%" src="https://github.com/HerloConnell/BlogPicture/blob/Optimization-problem/基于深度学习的组合优化1.png?raw=true" srcset="/img/loading.gif" lazyload>    
+  <img height="40%" width="40%" src="https://github.com/HerloConnell/BlogPicture/blob/Optimization-problem/基于深度学习的组合优化1.jpg?raw=true" srcset="/img/loading.gif" lazyload>    
   <br>    
   <div style="color:orange; border-bottom: 1px solid #d9d9d9;    display: inline-block;    color: #999;    padding: 2px;">
     图1 RNN神经元
@@ -413,7 +413,7 @@ c_i= \sum_{j=1}^{T_x}{\alpha_{i,j}h_j}</script><p>$T_x$代表编码器隐状态�
 <script type="math/tex; mode=display">
 e_{i,j} = a(s_{i-1}, h_j)</script><p>其中$a$代表某种对齐模型（如单层全连接层），即对$j$位置的输入和$i$时刻的输出，二者的匹配程度做一个评估，得到评估分数$e_{i,j}$。</p>
 <p>可以看出，Attention的作用就是将encoder的隐状态按照一定权重加和之后拼接到decoder的隐状态上，以此作为额外信息，起到“软对齐”的作用，并且提高了整个模型的预测准确度。简单举个例子，在机器翻译中一直存在对齐的问题，也就是说源语言的某个单词应该和目标语言的哪个单词对应，如“Who are you”对应“你是谁”，如果我们简单地按照顺序进行匹配的话会发现单词的语义并不对应，显然“who”不能被翻译为“你”。而Attention机制非常好地解决了这个问题。如前所述，Attention会给输入序列的每一个元素分配一个权重，如在预测“你”这个字的时候输入序列中的“you”这个词的权重最大，这样模型就知道“你”是和“you”对应的，从而实现了软对齐。</p>
-<h1 id="Pointer-Network"><a href="#Pointer-Network" class="headerlink" title="Pointer Network"></a>Pointer Network</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>此外，感谢以下博客，做了很好的总结</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>感谢下面的博客，做了很好的总结</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jerr__y/article/details/53749693">永永夜. seq2seq学习笔记</a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Christopher Olah.<a target="_blank" rel="noopener" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Sutskever I, Vinyals O, Le Q V. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1409.3215">Sequence to Sequence Learning with Neural Networks</a>[C]//Advances in neural information processing systems. 2014: 3104-3112.
