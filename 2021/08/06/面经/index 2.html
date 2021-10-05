@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>面经 - Herlo&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Herlo's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                Category
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                Links
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.svg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="面经">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-06 17:51" pubdate>
+        2021年8月6日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">面经</h1>
+            
+            <div class="markdown-body">
+              <h1 id="C-C-static关键字作用"><a href="#C-C-static关键字作用" class="headerlink" title="C/C++ static关键字作用"></a>C/C++ static关键字作用</h1><ol>
+<li><p>隐藏：当同时编译多个文件时，所有未加static前缀的全局变量和函数都具有全局可见性。</p>
+</li>
+<li><p>全局生命周期：存储在静态数据区的变量会在程序刚开始运行时就完成唯一的一次初始化。 共有两种变量存储在静态存储区：全局变量和static变量，与全局变量相比，static可以控制变量的可见范围。</p>
+</li>
+<li><p>变量默认初始化为0：在静态数据区，内存中所有的字节默认值都是0x00，所以全局变量也具备这一属性。</p>
+</li>
+<li><p>C++中的类成员声明static</p>
+<ul>
+<li>static修饰的变量或函数是属于类的，所有对象只有一份拷贝。 因此，不能将静态函数设为虚函数。  </li>
+<li>静态数据成员是静态存储的，所以必须对它进行初始化。 （程序员手动初始化，否则编译时一般不会报错，但是在Link时会报错误）  </li>
+</ul>
+</li>
+</ol>
+<h1 id="vector是如何扩容的"><a href="#vector是如何扩容的" class="headerlink" title="vector是如何扩容的"></a>vector是如何扩容的</h1><p>往vector中添加元素时，如果空间不够将会导致扩容。vector有两个属性：size和capacity。size表示已经使用的数据容量，capacity表示数组的实际容量，包含已使用的和未使用的。</p>
+<p>vector扩容规则：</p>
+<ol>
+<li>当数组大小不够容纳新增元素时，开辟更大的内存空间，把旧空间上的数据复制过来，然后在新空间中继续增加。</li>
+<li>新的更大的内存空间，一般是当前空间的1.5倍或者2倍，这个1.5或者2被称为扩容因子，不同系统实现扩容因子也不同。</li>
+</ol>
+<h1 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h1><p>重载：两个函数名相同，但是参数列表不同（个数，类型），返回值类型没有要求，在统一作用域中。</p>
+<p>覆盖：子类继承父类，父类中的函数是虚函数，在子类中重新定义了这个虚函数，这种情况是重写。</p>
+<p>重写：</p>
+<p>（1）如果派生类的函数与基类的函数同名，但是参数不同。此时，不论有无virtual关键字，基类的函数将被隐藏（注意别与重载混淆）。<br>（2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏（注意别与覆盖混淆）。</p>
+<h1 id="2-5亿个数求不重复数"><a href="#2-5亿个数求不重复数" class="headerlink" title="2.5亿个数求不重复数"></a>2.5亿个数求不重复数</h1><p>有2.5亿个整数(这2.5亿个整数存储在一个数组里面，至于数组是放在外存还是内存，没有进一步具体说明)；<br>要求找出这2.5亿个数字里面， 不重复的数字的个数 ； 另外，可用的内存限定为600M； </p>
+<p>用一个bit表示一个数是否存在，32bit中无符号整数有4G个，共需4G bits，每个字节8 bits，需要4G/8 = 512M字节；申请512M内存，作为一个数是否存在的标记flag，全清0；申请另外一组bit作为计数器count，全清0；</p>
+<h1 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h1><p><code>volatile</code>直译为易失性的，意在声明某变量有可能被编译器未知的因素更改，如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，<strong>编译器对访问该变量的代码就不再进行优化</strong>。例如：</p>
+<div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">waitForSemaphore</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+   <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">uint16_t</span>* semPtr = WELL_KNOWN_SEM_ADDR;<span class="hljs-comment">/*well known address to my semaphore*/</span>
+   <span class="hljs-keyword">while</span> ((*semPtr) != IS_OK_FOR_ME_TO_PROCEED);
+&#125;</code></pre></div>
+<p>如果未进行易失性声明，优化编译器会把变量从内存装入CPU寄存器中， 即使其他线程对内存中的变量进行修改，当前线程只使用寄存器中的值，<code>while</code>循环将是一个死循环；加修饰字之后，编译器每次操作该变量时会从内存中真正取出。</p>
+<div class="code-wrapper"><pre><code class="hljs c"><span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> a = i;
+<span class="hljs-keyword">int</span> b = i;</code></pre></div>
+<p><code>volatile</code>指出<code>i</code>是随时可能发生变化的，每次使用它的时候必须从<code>i</code>的地址中读取，因而编译器生成的汇编代码会重新从<code>i</code>的地址读取数据放在<code>b</code>中。而优化做法是，由于编译器发现两次读数据的代码之间的代码没有对<code>i</code>进行过操作，它会自动把上次读的数据放在 <code>b</code>中。而不是重新从<code>i</code>里面读。</p>
+<p><strong>参考</strong></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/a/72576/16657286">https://stackoverflow.com/a/72576/16657286</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62060524">https://zhuanlan.zhihu.com/p/62060524</a></p>
+<h1 id="常驻内存和共享内存"><a href="#常驻内存和共享内存" class="headerlink" title="常驻内存和共享内存"></a>常驻内存和共享内存</h1><ul>
+<li>常驻内存：进程间切换时，操作系统会将数据从内存复制到磁盘上来释放一部分内存。然而，当一部分内存指定为<em>常驻</em>时，它不会与磁盘交换。使频繁访问的数据常驻在内存中可以减少访问该数据所需的磁盘 I/O 操作，如操作系统的中心部分和一些特殊程序，如日历和计算器。</li>
+<li>共享内存是进程间通信中最简单的方式之一。共享内存允许两个或更多进程访问同一块内存，当一个进程改变了这块地址中的内容的时候，其它进程都会察觉到这个更改。</li>
+</ul>
+<h1 id="DNS协议"><a href="#DNS协议" class="headerlink" title="DNS协议"></a>DNS协议</h1><p>DNS （Domain Name System）的作用非常简单，就是根据域名查出IP地址。</p>
+<p>客户端在上网的时候，需要设置：本机的IP地址、子网掩码、网关的IP地址、DNS服务器的IP地址。我们就是通过DNS服务器查得域名对应的IP地址。DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。</p>
+<p>DNS服务器怎么会知道每个域名的IP地址呢？答案是分级查询。</p>
+<p><strong>域名的层级</strong></p>
+<p>举例来说，<code>www.example.com</code>真正的域名是<code>www.example.com.root</code>，简写为<code>www.example.com.</code>。因为，根域名<code>.root</code>对于所有域名都是一样的，所以平时是省略的。</p>
+<p>根域名的下一级，叫做”顶级域名”（top-level domain，缩写为TLD），比如<code>.com</code>、<code>.net</code>；再下一级叫做”次级域名”（second-level domain，缩写为SLD），比如<code>www.example.com</code>里面的<code>.example</code>，这一级域名是用户可以注册的；再下一级是主机名（host），比如<code>www.example.com</code>里面的<code>www</code>，又称为”三级域名”，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。</p>
+<p>总结一下，域名的层级结构如下。</p>
+<div class="code-wrapper"><pre><code class="hljs no">主机名.次级域名.顶级域名.根域名
+
+# 即
+
+host.sld.tld.root</code></pre></div>
+<p><strong>DNS记录</strong></p>
+<p>域名与IP之间的对应关系，称为”记录”。根据使用场景，”记录”可以分成不同的类型。</p>
+<div class="code-wrapper"><pre><code class="hljs dns">（<span class="hljs-number">1</span>） <span class="hljs-keyword">A</span>：地址记录（Address），返回域名指向的IP地址。
+（<span class="hljs-number">2</span>） <span class="hljs-keyword">NS</span>：域名服务器记录（Name Server），返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。
+（<span class="hljs-number">3</span>）<span class="hljs-keyword">CNAME</span>：规范名称记录（Canonical Name），返回另一个域名，即当前查询的域名是另一个域名的跳转。</code></pre></div>
+<p><strong>分级查询</strong></p>
+<p>“分级查询”，就是从根域名开始，依次查询每一级域名的NS记录，直到查到最终的IP地址。每一级域名都有自己的NS记录，NS记录指向该级域名的域名服务器。这些服务器知道下一级域名的各种记录。过程大致如下。</p>
+<div class="code-wrapper"><pre><code class="hljs no">1. 从&quot;根域名服务器&quot;查到&quot;顶级域名服务器&quot;的NS记录和A记录（IP地址）
+2. 从&quot;顶级域名服务器&quot;查到&quot;次级域名服务器&quot;的NS记录和A记录（IP地址）
+3. 从&quot;次级域名服务器&quot;查出&quot;主机名&quot;的IP地址</code></pre></div>
+<p>上面，”根域名服务器”的NS记录和IP地址一般是不会变化的，所以内置在DNS服务器里面。</p>
+<p><strong>参考</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2016/06/dns.html">https://www.ruanyifeng.com/blog/2016/06/dns.html</a></p>
+<h1 id="进程的内存分布"><a href="#进程的内存分布" class="headerlink" title="进程的内存分布"></a>进程的内存分布</h1><p><img src="https://github.com/HerloConnell/BlogPicture/blob/CS-basics/面经1.png?raw=true" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>从低地址到高地址，分别包括：</p>
+<ol>
+<li>文本段，也叫代码段，是对象文件或内存中程序的一部分，其中包含可执行指令。通常代码段是共享的，对于经常执行的程序，只有一个副本需要存储在内存中，代码段是只读的，以防止程序以外修改指令。</li>
+<li>初始化的数据段，是程序的虚拟地址空间的一部分，它包含有程序员初始化的全局变量和静态变量，可以进一步划分为只读区域和读写区域。例如，C中的char=“hello world”的全局字符串，以及main(例如全局)之外的int debug=1这样的C语句。</li>
+<li>未初始化的数据段，通常称为bss段，这个段的数据在程序开始之前有内核初始化为0，包含所有初始化为0和没有显示初始化的全局变量和静态变量，</li>
+<li>堆，堆是动态内存分配通常发生的部分。堆是由程序员自己分配的（malloc kmalloc等）。堆区域由所有共享库和进程中动态加载的模块共享。</li>
+<li>栈，存放临时变量，以及每次调用函数时调用栈。每当调用一个函数时，返回到的地址和关于调用者环境的某些信息的地址，比如一些机器寄存器，就会被保存在栈中。然后，新调用的函数在栈上分配空间，用于自动和临时变量。</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计算机网络面试</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/03/blog-init/">
+                        <span class="hidden-mobile">Mac下使用GitHub+Hexo+Fluid搭建个人博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
