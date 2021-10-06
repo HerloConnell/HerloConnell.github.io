@@ -1,0 +1,1211 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+  <title>Mysql基础语法 - Herlo&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mycss.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Herlo's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                Category
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                
+                Links
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/bg.svg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Mysql基础语法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-26 13:04" pubdate>
+        2021年8月26日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      63
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Mysql基础语法</h1>
+            
+            <div class="markdown-body">
+              <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><strong>brew安装Mysql</strong></p>
+<div class="code-wrapper"><pre><code class="hljs no">lihan@LideMacBook-Air ~ % brew install mysql
+==&gt; Installing mysql
+==&gt; Summary
+🍺  /opt/homebrew/Cellar/mysql/8.0.26: 303 files, 296.7MB
+==&gt; mysql
+We&#x27;ve installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+MySQL is configured to only allow connections from localhost by default
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don&#x27;t want/need a background service you can just run:
+  mysql.server start
+lihan@LideMacBook-Air ~ % mysql.server start
+Starting MySQL
+.. SUCCESS! 
+lihan@LideMacBook-Air ~ % mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Connecting to MySQL using a blank password.
+
+VALIDATE PASSWORD COMPONENT can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD component?
+
+Press y|Y for Yes, any other key for No: y
+
+There are three levels of password validation policy:
+
+LOW    Length &gt;= 8
+MEDIUM Length &gt;= 8, numeric, mixed case, and special characters
+STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2
+Please set the password for root here.
+
+New password: 
+
+Re-enter new password: 
+
+Estimated strength of the password: 100 
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+
+Normally, root should only be allowed to connect from
+&#x27;localhost&#x27;. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No)  n    
+ ... skipping.
+By default, MySQL comes with a database named &#x27;test&#x27; that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+All done! 
+lihan@LideMacBook-Air ~ % mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.26 Homebrew
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.
+
+mysql&gt; exit;
+Bye</code></pre></div>
+<p><strong>建立数据库</strong></p>
+<div class="code-wrapper"><pre><code class="hljs no">链接：https://pan.baidu.com/s/1xDsDWFLiRITYTT6HoFb7Tw 
+提取码：s5iz</code></pre></div>
+<p>注意存放位置如果有中文路径可能会在之后报<code>error 2</code>错误</p>
+<p>在<code>source</code>后直接拖入<code>sql</code>文件即可</p>
+<div class="code-wrapper"><pre><code class="hljs no">mysql&gt; create database mydatabase;
+Query OK, 1 row affected (0.01 sec)
+
+mysql&gt; use mydatabase
+Database changed
+mysql&gt; source /Users/lihan/Desktop/summer/create-databases.sql 
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+....
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydatabase         |
+| mysql              |
+| performance_schema |
+| sql_hr             |
+| sql_inventory      |
+| sql_invoicing      |
+| sql_store          |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql&gt; drop database mydatabase;
+Query OK, 0 rows affected (0.01 sec)</code></pre></div>
+<h1 id="单表检索"><a href="#单表检索" class="headerlink" title="单表检索"></a>单表检索</h1><ul>
+<li>Mysql大小写不分，建议大写关键字，小写其他内容</li>
+<li>在行前使用<code>--</code>表示注释</li>
+<li>每个语句后使用<code>;</code>表示结束</li>
+<li>可以使用算术表达式</li>
+<li>可以使用<code>AS</code>关键字为列取别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> first_name, point <span class="hljs-operator">*</span> <span class="hljs-number">10</span> <span class="hljs-operator">+</span> <span class="hljs-number">100</span> <span class="hljs-keyword">AS</span> `discount_factor`
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-comment">-- WHERE custom_id = 1</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> first_name;</code></pre></div>
+<ul>
+<li><code>DISTINCT</code>可以删除重复项， <em>重复</em>是以列的组合判断的，<code>DISTINCT</code>必须放在开头</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> state 
+<span class="hljs-keyword">FROM</span> customers;</code></pre></div>
+<ul>
+<li><code>WHERE</code>中对于文本需要使用单引号或双引号，文本大小写不敏感</li>
+<li>注意此处的<code>Customers</code>与<code>va</code>均大小写不敏感</li>
+<li><code>!=</code> ，<code>&lt;&gt;</code>均意为不等于</li>
+<li>日期类型数据也需使用引号</li>
+<li>可以使用<code>AND</code>，<code>OR</code>，<code>NOT</code>创建复合条件语句</li>
+<li>条件语句中可以使用算数表达式</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> Customers
+<span class="hljs-keyword">WHERE</span> state <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-string">&#x27;va&#x27;</span> 
+			<span class="hljs-keyword">AND</span> birth_data <span class="hljs-operator">&gt;</span> <span class="hljs-string">&#x27;1990-01-01&#x27;</span>;</code></pre></div>
+<ul>
+<li><code>IN</code>关键字判断是否在集合中</li>
+<li><code>BETWEEN</code>关键字判断是否在闭区间内</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> state <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;VA&#x27;</span>, <span class="hljs-string">&#x27;FL&#x27;</span>) 
+			<span class="hljs-keyword">AND</span> points <span class="hljs-keyword">BETWEEN</span> <span class="hljs-number">1000</span> <span class="hljs-keyword">AND</span> <span class="hljs-number">2000</span>;</code></pre></div>
+<ul>
+<li><code>LIKE</code>关键字用于文本模糊匹配常用的有：<code>_</code>单一字符，<code>%</code>任意数目字符</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> last_name <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%field%&#x27;</span>;</code></pre></div>
+<ul>
+<li><code>REGEXP</code>关键字使用正则表达式进行模糊匹配</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> last_name REGEXP <span class="hljs-string">&#x27;field&#x27;</span>;</code></pre></div>
+<ul>
+<li><code>NULL</code>表示空值</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> phone <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;</code></pre></div>
+<ul>
+<li>结果集默认以主键为标准进行生序排序，使用<code>ORDER BY</code>关键字可以使用其他列为标准排序</li>
+<li>默认升序排序，使用<code>DESC</code>进行降序排序</li>
+<li>可以使用多个排序规则，越靠前优先级越高</li>
+<li>Mysql中允许用于排序的列不是结果集的列</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> first_name
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> state <span class="hljs-keyword">DESC</span>, first_name <span class="hljs-keyword">DESC</span>;</code></pre></div>
+<ul>
+<li><code>LIMIT</code>关键字用于限制结果集大小，可用于网站分页</li>
+<li><code>LIMIT 3</code>代表结果集大小为3，<code>LIMIT 6, 3</code>代表跳过6行取3行</li>
+<li>注意<code>WHERE</code>，<code>ORDER BY</code>，<code>LIMIT</code>在语句中出现的先后顺序</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> state <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-string">&#x27;va&#x27;</span> 
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> points <span class="hljs-keyword">DESC</span>
+LIMIT <span class="hljs-number">3</span>;</code></pre></div>
+<h1 id="多表检索"><a href="#多表检索" class="headerlink" title="多表检索"></a>多表检索</h1><ul>
+<li><code>JOIN</code>默认代表内连接即 <code>INNER JOIN</code></li>
+<li>可以为表取别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> o.customer_id
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">JOIN</span> customers
+		 <span class="hljs-keyword">ON</span> o.customer_id <span class="hljs-operator">=</span> customer.customer_id;</code></pre></div>
+<ul>
+<li>可以对不同数据库的表进行连接</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> order_items oi
+<span class="hljs-keyword">JOIN</span> sql_inventory.products p
+		 <span class="hljs-keyword">ON</span> oi.product_id <span class="hljs-operator">=</span> p.product_id;</code></pre></div>
+<ul>
+<li>表也可以与自身进行连接，称为自连接</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> e.employee_id,
+			 e.first_name,
+			 m.first_nam
+<span class="hljs-keyword">FROM</span> employees e
+<span class="hljs-keyword">JOIN</span> employees m
+		 <span class="hljs-keyword">WHERE</span> e.reports_to <span class="hljs-operator">=</span> m.employee_id;</code></pre></div>
+<ul>
+<li><code>JOIN</code>多次使用可以多表连接</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">JOIN</span> customers c
+<span class="hljs-keyword">ON</span> o.customer_id <span class="hljs-operator">=</span> c.customer_id
+<span class="hljs-keyword">JOIN</span> order_statuses os
+<span class="hljs-keyword">ON</span> o.status <span class="hljs-operator">=</span> os.order_status_id;</code></pre></div>
+<ul>
+<li><code>AND</code>创建复合连接条件</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> order_items oi
+<span class="hljs-keyword">JOIN</span> order_items_notes oin
+		<span class="hljs-keyword">ON</span> oi.order_id <span class="hljs-operator">=</span> oin.order_id
+		<span class="hljs-keyword">AND</span> oi.product_id <span class="hljs-operator">=</span> oin.product_id;</code></pre></div>
+<ul>
+<li>一般我们使用显式连接（第一句）而不是隐式连接（第二句）</li>
+<li>显式连接不加<code>ON</code>指名连接条件或隐式连接不加<code>WHERE</code>，的时候称为交叉连接，返回笛卡尔积的结果</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">JOIN</span> customers c
+		<span class="hljs-keyword">ON</span> o.customer_id <span class="hljs-operator">=</span> c.customer_id;
+		
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o, customers c
+<span class="hljs-keyword">WHERE</span> o.customer_id <span class="hljs-operator">=</span> c.customer_id;
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o, customers c;</code></pre></div>
+<ul>
+<li><code>LEFT JOIN</code>左外连接表示所有左表的记录都会返回，如果右表没有相匹配的结果，对应位置置为NULL</li>
+<li><code>OUTER</code>关键字一般省去</li>
+<li>为使得语句清晰，外连接尽量使用左连接</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers c
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> orders o
+		<span class="hljs-keyword">ON</span> c.customer_id <span class="hljs-operator">=</span> o.customer_id;</code></pre></div>
+<ul>
+<li>多表连接时候，判断左右表关系似乎是按照<code>ON</code>来的，有待补充</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> customers c
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> orders o
+		<span class="hljs-keyword">ON</span> c.customer_id <span class="hljs-operator">=</span> o.customer_id
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> shippers sh
+		<span class="hljs-keyword">ON</span> o.shipper_id <span class="hljs-operator">=</span> sh.shipper_id
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> c.customer_id;</code></pre></div>
+<ul>
+<li>和内连接类似，外连接也可以自连接</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> employees m
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> emplyees m
+		<span class="hljs-keyword">ON</span> e.reports_to <span class="hljs-operator">=</span> m.emplyee_id;</code></pre></div>
+<ul>
+<li>当两个表的列名完全一样时，使用<code>USING</code>简化，<code>USING</code>同样适用于有多个列作为键码的情况</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">JOIN</span> customers c
+		<span class="hljs-comment">-- ON o.customer_id = c.customer_id</span>
+		<span class="hljs-keyword">USING</span> (customer_id);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> order_items oi
+<span class="hljs-keyword">JOIN</span> order_items_notes oin
+		<span class="hljs-comment">-- ON oi.order_id = oin.order_id</span>
+		<span class="hljs-comment">-- AND oi.product_id = oin.product_id;</span>
+		<span class="hljs-keyword">USING</span> (order_id, product_id);</code></pre></div>
+<ul>
+<li><code>NATURAL JOIN</code>自然连接，使用同名的属性组，并且在结果中把重复的属性列去掉，不建议使用</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> customers c;</code></pre></div>
+<ul>
+<li><code>CROSS JOIN</code>交叉连接，返回笛卡尔积，即所有的组合结果</li>
+<li>第一句为显式写法，第二句为隐式写法</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o
+<span class="hljs-keyword">CROSS</span> <span class="hljs-keyword">JOIN</span> customers c;
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> orders o, customers c;</code></pre></div>
+<ul>
+<li><code>UNION</code>联合查询结果，两次<code>SELECT</code>必须有相同的属性数，属性名以第一次查询为主进行整合</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> first_name
+<span class="hljs-keyword">FROM</span> archived_orders
+<span class="hljs-keyword">UNION</span>
+<span class="hljs-keyword">SELECT</span> name
+<span class="hljs-keyword">FROM</span> orders;</code></pre></div>
+<h1 id="插入、更新、删除"><a href="#插入、更新、删除" class="headerlink" title="插入、更新、删除"></a>插入、更新、删除</h1><ul>
+<li><code>INSERT INTO</code>插入单行</li>
+<li><code>DEFAULT</code>可用于存在默认值或递增的属性</li>
+<li><code>NULL</code>可用于允许空值的属性</li>
+<li>可以指定要插入的列</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> customers
+<span class="hljs-keyword">VALUES</span> (
+  	<span class="hljs-keyword">DEFAULT</span>, 
+  	<span class="hljs-string">&#x27;John&#x27;</span>, 
+  	<span class="hljs-string">&#x27;Smith&#x27;</span>, 
+  	<span class="hljs-keyword">NULL</span>,
+		<span class="hljs-string">&#x27;address&#x27;</span>,
+		<span class="hljs-string">&#x27;city&#x27;</span>,
+		<span class="hljs-string">&#x27;CA&#x27;</span>,
+		<span class="hljs-number">200</span>);
+
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> customers (
+		first_name,
+		last_name,
+		birth_date,
+		address,
+		city,
+		state)
+<span class="hljs-keyword">VALUES</span> (
+  	<span class="hljs-string">&#x27;John&#x27;</span>, 
+  	<span class="hljs-string">&#x27;Smith&#x27;</span>, 
+  	<span class="hljs-string">&#x27;1990-01-01&#x27;</span>,
+		<span class="hljs-string">&#x27;address&#x27;</span>,
+		<span class="hljs-string">&#x27;city&#x27;</span>,
+		<span class="hljs-string">&#x27;CA&#x27;</span>);</code></pre></div>
+<ul>
+<li>使用<code>VALUES</code>也可以一次插入多行</li>
+<li>在删除一些行的情况下，自增的属性值依然会记住他们，即出现递增属性不连续</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> shippers (name)
+<span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;Shipper1&#x27;</span>),
+			 (<span class="hljs-string">&#x27;Shipper2&#x27;</span>),
+			 (<span class="hljs-string">&#x27;Shipper3&#x27;</span>);</code></pre></div>
+<ul>
+<li><code>LAST_INSERT_TO()</code>获得最新执行成功的<code>INSERT</code>语句的自增id</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> orders (customer_id, order_date, status)
+<span class="hljs-keyword">VALUES</span> (<span class="hljs-number">1</span>, <span class="hljs-string">&#x27;2019-01-01&#x27;</span>, <span class="hljs-number">1</span>);
+
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> order_items
+<span class="hljs-keyword">VALUES</span> 
+    (last_insert_id(), <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2.5</span>),
+    (last_insert_id(), <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1.5</span>);</code></pre></div>
+<ul>
+<li><code>CREATE TABLE</code>可以通过<code>SELECT</code>语句创建基于查询的复制表，属性不再拥有自增，主键等性质</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> orders_archived <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> orders;</code></pre></div>
+<ul>
+<li><code>UPDATE</code>关键字可用于更新表中的某些行</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql">UPDATE invoices
+<span class="hljs-keyword">SET</span> payment_total <span class="hljs-operator">=</span> <span class="hljs-number">0.5</span> <span class="hljs-operator">*</span> invoice_total, 
+    payment_date <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;2019-01-01&#x27;</span>
+<span class="hljs-keyword">WHERE</span> invoice_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;</code></pre></div>
+<ul>
+<li><code>UPDATE</code>操作也可以结合子查询使用</li>
+<li>子查询添加括号确保先执行</li>
+<li>子查询返回多个数据时应使用<code>IN</code>关键字</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql">UPDATE invoices
+<span class="hljs-keyword">SET</span> payment_total <span class="hljs-operator">=</span> <span class="hljs-number">567</span>, 
+		payment_date <span class="hljs-operator">=</span> due_date
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> 
+            (<span class="hljs-keyword">SELECT</span> client_id 
+            <span class="hljs-keyword">FROM</span> clients
+            <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Yadel&#x27;</span>);
+
+UPDATE invoices
+<span class="hljs-keyword">SET</span> payment_total <span class="hljs-operator">=</span> <span class="hljs-number">567</span>, 
+		payment_date <span class="hljs-operator">=</span> due_date
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">IN</span> 
+            (<span class="hljs-keyword">SELECT</span> client_id 
+            <span class="hljs-keyword">FROM</span> clients
+            <span class="hljs-keyword">WHERE</span> state <span class="hljs-keyword">IN</span> (<span class="hljs-string">&#x27;CA&#x27;</span>, <span class="hljs-string">&#x27;NY&#x27;</span>));</code></pre></div>
+<ul>
+<li><code>DELETE</code>关键字用于删除</li>
+<li><code>WHERE</code>可选，省略将删除表的所有记录</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> 
+            (<span class="hljs-keyword">SELECT</span> client_id  
+            <span class="hljs-keyword">FROM</span> clients
+            <span class="hljs-keyword">WHERE</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Myworks&#x27;</span>);</code></pre></div>
+<h1 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h1><ul>
+<li>Mysql内置有<code>MAX()</code>，<code>MIN()</code>，<code>AVG()</code>，<code>SUM()</code>，<code>COUNT()</code>等聚合函数</li>
+<li>聚合函数不仅可以用于列，也可以用于表达式</li>
+<li>聚合函数会忽略空值，对于<code>COUNT()</code>函数需要注意</li>
+<li><code>COUNT(*)</code>不会忽略空值，<code>*</code>表示全部数据</li>
+<li>可以使用<code>DISTINCT</code>筛掉列的重复值</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    <span class="hljs-built_in">MAX</span>(invoice_date) <span class="hljs-keyword">AS</span> latest_date,  
+    <span class="hljs-built_in">MIN</span>(invoice_total) lowest,
+    <span class="hljs-built_in">AVG</span>(invoice_total) average,
+    <span class="hljs-built_in">SUM</span>(invoice_total <span class="hljs-operator">*</span> <span class="hljs-number">1.1</span>) total,
+    <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) total_records,
+    <span class="hljs-built_in">COUNT</span>(invoice_total) number_of_invoices, 
+    <span class="hljs-built_in">COUNT</span>(payment_date) number_of_payments,  
+    <span class="hljs-built_in">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> client_id) number_of_distinct_clients
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_date <span class="hljs-operator">&gt;</span> <span class="hljs-string">&#x27;2019-07-01&#x27;</span>;</code></pre></div>
+<ul>
+<li><code>GROUP BY</code>配合聚合函数使用，进行分组统计</li>
+<li>注意<code>WHERE</code>，<code>GROUP BY</code>，<code>ORDER BY</code>的先后顺序</li>
+<li><code>GROUP BY</code>也可以多列组合为依据分组，逗号分隔即可</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    client_id,  
+    <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">AS</span> total_sales
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_date <span class="hljs-operator">&gt;=</span> <span class="hljs-string">&#x27;2019-07-01&#x27;</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> total_sales <span class="hljs-keyword">DESC</span>;
+
+<span class="hljs-keyword">SELECT</span> 
+    state,
+    city,
+    <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">AS</span> total_sales
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">JOIN</span> clients <span class="hljs-keyword">USING</span> (client_id) 
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> state, city  
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> state;</code></pre></div>
+<ul>
+<li><code>HAVING</code>关键字对<code>SELECT</code>后的结果列进行事后筛选，通常用于分组聚合后查询</li>
+<li><code>HAVING</code>和 <code>WHERE</code> 都是是条件筛选语句，条件写法相通</li>
+<li><code>HAVING</code>使用结果列明，<code>WHERE</code>使用原表列名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    client_id,
+    <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">AS</span> total_sales,
+    <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span><span class="hljs-operator">/</span>invoice_total<span class="hljs-operator">/</span>invoice_date) <span class="hljs-keyword">AS</span> number_of_invoices
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+<span class="hljs-keyword">HAVING</span> total_sales <span class="hljs-operator">&gt;</span> <span class="hljs-number">500</span> <span class="hljs-keyword">AND</span> number_of_invoices <span class="hljs-operator">&gt;</span> <span class="hljs-number">5</span>;</code></pre></div>
+<ul>
+<li>Mysql提供了<code>ROLLUP</code>运算符对聚合值进行汇总，如下将返回各客户的发票总额以及所有人的总发票额</li>
+<li><code>ROLLUP</code>不是标准的SQL语言</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    client_id,
+    <span class="hljs-built_in">SUM</span>(invoice_total)
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
+<ul>
+<li>当<code>GROUP BY</code>取多列时，<code>ROLLUP</code>可以进行多层汇总</li>
+<li>下面将返回各州的各市的发票总额以及州层次和全国层次的汇总额</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    state,
+    city,
+    <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">AS</span> total_sales
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">JOIN</span> clients <span class="hljs-keyword">USING</span> (client_id) 
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> state, city <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
+<ul>
+<li>使用<code>ROLLUP</code>时，<code>GROUP BY</code>不能使用列别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    pm.name <span class="hljs-keyword">AS</span> payment_method,
+    <span class="hljs-built_in">SUM</span>(amount) <span class="hljs-keyword">AS</span> total
+<span class="hljs-keyword">FROM</span> payments p
+<span class="hljs-keyword">JOIN</span> payment_methods pm
+    <span class="hljs-keyword">ON</span> p.payment_method <span class="hljs-operator">=</span> pm.payment_method_id
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> pm.name <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">ROLLUP</span>;</code></pre></div>
+<h1 id="编写复杂查询"><a href="#编写复杂查询" class="headerlink" title="编写复杂查询"></a>编写复杂查询</h1><ul>
+<li>Mysql将先执行括号内的子查询，之后将结果返回给外查询</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> unit_price <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> unit_price
+    <span class="hljs-keyword">FROM</span> products
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products
+<span class="hljs-keyword">WHERE</span> product_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> product_id
+    <span class="hljs-keyword">FROM</span> order_items
+);</code></pre></div>
+<ul>
+<li>子查询将一张表的查询结果作为另一张表的查询依据并层层嵌套；链接将这些表合并成一个包含所需全部信息的详情表再直接在详情表里筛选查询；两种方法一般是可互换的，具体用哪一种取决于效率和可读性</li>
+<li>例：查找从未订购过的顾客，下面两种方法均可达到效果</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> invoices <span class="hljs-keyword">USING</span> (client_id)
+<span class="hljs-keyword">WHERE</span> invoices_id <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;</code></pre></div>
+<ul>
+<li>例：选出买过生菜（id = 3）的顾客的id，姓和名，采用混合子查询+表连接的方法</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> customer_id, first_name, last_name
+<span class="hljs-keyword">FROM</span> customers
+<span class="hljs-keyword">WHERE</span> customer_id <span class="hljs-keyword">IN</span> (  
+    <span class="hljs-keyword">SELECT</span> customer_id
+    <span class="hljs-keyword">FROM</span> orders
+    <span class="hljs-keyword">JOIN</span> order_items <span class="hljs-keyword">USING</span> (order_id)  
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+<ul>
+<li><code>ALL</code>关键字代表集合中的任意记录</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MAX</span>(invoice_total)
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ALL</span> (
+    <span class="hljs-keyword">SELECT</span> invoice_total
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+<ul>
+<li><code>ANY</code>关键字代表集合中存在某条记录，可与<code>MIN</code>等效</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ANY</span> (
+<span class="hljs-keyword">SELECT</span> invoice_total
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> invoice_total <span class="hljs-operator">&gt;</span> (
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">MIN</span>(invoice_total)
+<span class="hljs-keyword">FROM</span> invoices
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-number">3</span>
+);</code></pre></div>
+<ul>
+<li><code>ANY</code>某些时候也可与<code>IN</code>等效</li>
+<li>例：选择至少有两次发票记录的顾客</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;=</span> <span class="hljs-number">2</span>
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> <span class="hljs-keyword">ANY</span> ( 
+    <span class="hljs-keyword">SELECT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> client_id
+    <span class="hljs-keyword">HAVING</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-operator">&gt;=</span> <span class="hljs-number">2</span>
+);</code></pre></div>
+<ul>
+<li>在上面的子查询中，子查询与主查询无关，可以先进行完子查询，再进行主查询</li>
+<li>相关子查询，子查询与主查询有关</li>
+<li>例：返回各部门中工资超过该部门平均值的人，对于<code>employees e</code>中的每条记录，都将执行一次子查询</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> employees e  <span class="hljs-comment">-- 关键 1</span>
+<span class="hljs-keyword">WHERE</span> salary <span class="hljs-operator">&gt;</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(salary)
+    <span class="hljs-keyword">FROM</span> employees
+    <span class="hljs-keyword">WHERE</span> office_id <span class="hljs-operator">=</span> e.office_id  <span class="hljs-comment">-- 关键 2</span>
+    <span class="hljs-comment">-- 【子查询表字段不用加前缀，主查询表的字段要加前缀，以此区分】</span>
+);</code></pre></div>
+<ul>
+<li><code>EXISTS</code>关键字如果集合不为空返回<code>TRUE</code>，否则返回<code>FALSE</code></li>
+<li><code>IN + 子查询</code> 等效于 <code>EXIST + 相关子查询</code>，如前者子查询结果集过大占用内存，后者逐条验证更有效率</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients
+<span class="hljs-keyword">WHERE</span> client_id <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> client_id
+    <span class="hljs-keyword">FROM</span> invoices
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> clients c
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+    <span class="hljs-comment">-- 就这个子查询的目的来说，SELECT的选择不影响结果，</span>
+    <span class="hljs-comment">-- 因为EXISTS()函数只根据是否为空返回结果</span>
+    <span class="hljs-keyword">FROM</span> invoices
+    <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id
+);</code></pre></div>
+<ul>
+<li><code>EXISTS()</code>返回的是 <code>TRUE/FALSE</code>，所以也可以加上<code>NOT</code>取反</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products 
+<span class="hljs-keyword">WHERE</span> product_id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+    <span class="hljs-keyword">FROM</span> order_items
+);
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> products p
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (
+    <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+    <span class="hljs-keyword">FROM</span> order_items
+    <span class="hljs-keyword">WHERE</span> product_id <span class="hljs-operator">=</span> p.product_id
+);</code></pre></div>
+<ul>
+<li>例：经典题目，选择没有选所有课的学生</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 选择没有选所有课的学生</span>
+<span class="hljs-comment">-- 存在某一样课，该学生没有对应的选课记录</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+<span class="hljs-keyword">FROM</span> stu s
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span>(
+  	<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+  	<span class="hljs-keyword">FROM</span> class c
+  	<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>(
+      	<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span>
+      	<span class="hljs-keyword">FROM</span> stu_class
+      	<span class="hljs-keyword">WHERE</span> stu_id <span class="hljs-operator">=</span> s.stu_id <span class="hljs-keyword">AND</span> class_id <span class="hljs-operator">=</span> c.class_id
+    )
+);</code></pre></div>
+<ul>
+<li>子查询或相关子查询也可用于<code>SELECT</code>中</li>
+<li>引用同级的列别名，需要使用<code>SELECT</code>，引用同级的列别名不需要说明来源</li>
+<li>下面的例子中有三个子查询，第一个为相关子查询，表示某顾客订单总量，第二个为子查询，表示所有订单平均值，第三个引用同级的列别名，表示前两者的差</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> 
+    client_id,
+    name,
+    (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id) <span class="hljs-keyword">AS</span> total_sales,
+    (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices) <span class="hljs-keyword">AS</span> average,
+    (<span class="hljs-keyword">SELECT</span> total_sales <span class="hljs-operator">-</span> average) <span class="hljs-keyword">AS</span> difference   
+<span class="hljs-keyword">FROM</span> clients c;</code></pre></div>
+<ul>
+<li>子查询也可用于<code>FROM</code>中</li>
+<li>当子查询太复杂时应使用视图将子查询结果储存起来，使用视图作为来源表</li>
+<li>在FROM中使用子查询，即使用 “派生表” 时，必须给派生表取个别名</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> 
+<span class="hljs-keyword">FROM</span> (
+    <span class="hljs-keyword">SELECT</span> 
+        client_id,
+        name,
+        (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices <span class="hljs-keyword">WHERE</span> client_id <span class="hljs-operator">=</span> c.client_id) <span class="hljs-keyword">AS</span> total_sales,
+        (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(invoice_total) <span class="hljs-keyword">FROM</span> invoices) <span class="hljs-keyword">AS</span> average,
+        (<span class="hljs-keyword">SELECT</span> total_sales <span class="hljs-operator">-</span> average) <span class="hljs-keyword">AS</span> difference   
+    <span class="hljs-keyword">FROM</span> clients c
+) <span class="hljs-keyword">AS</span> sales_summury
+<span class="hljs-keyword">WHERE</span> total_sales <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;</code></pre></div>
+<h1 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a>基本函数</h1><p>内置的用来处理数值、文本、日期等的函数</p>
+<ul>
+<li>数值函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> ROUND(<span class="hljs-number">5.7365</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">-- 四舍五入</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">TRUNCATE</span>(<span class="hljs-number">5.7365</span>, <span class="hljs-number">2</span>)  <span class="hljs-comment">-- 截断</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">CEILING</span>(<span class="hljs-number">5.2</span>)  <span class="hljs-comment">-- 天花板函数，大于等于此数的最小整数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">FLOOR</span>(<span class="hljs-number">5.6</span>)  <span class="hljs-comment">-- 地板函数，小于等于此数的最大整数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">ABS</span>(<span class="hljs-number">-5.2</span>)  <span class="hljs-comment">-- 绝对值</span>
+<span class="hljs-keyword">SELECT</span> RAND()  <span class="hljs-comment">-- 随机函数，0到1的随机值</span></code></pre></div>
+<ul>
+<li>字符串函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> LENGTH(<span class="hljs-string">&#x27;sky&#x27;</span>)  <span class="hljs-comment">-- 字符串字符个数</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">UPPER</span>(<span class="hljs-string">&#x27;sky&#x27;</span>)  <span class="hljs-comment">-- 转大写</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">LOWER</span>(<span class="hljs-string">&#x27;Sky&#x27;</span>)  <span class="hljs-comment">-- 转小写</span>
+
+<span class="hljs-keyword">SELECT</span> LTRIM(<span class="hljs-string">&#x27;  Sky&#x27;</span>)  <span class="hljs-comment">-- 去除左多余空格</span>
+<span class="hljs-keyword">SELECT</span> RTRIM(<span class="hljs-string">&#x27;Sky  &#x27;</span>)  <span class="hljs-comment">-- 去除右多余空格</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">TRIM</span>(<span class="hljs-string">&#x27; Sky &#x27;</span>)  <span class="hljs-comment">-- 去除多余空格</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">LEFT</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">4</span>)  <span class="hljs-comment">-- 取左4个字符</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">RIGHT</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">6</span>)  <span class="hljs-comment">-- 取右6个字符</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUBSTRING</span>(<span class="hljs-string">&#x27;Kindergarden&#x27;</span>, <span class="hljs-number">7</span>, <span class="hljs-number">6</span>)  <span class="hljs-comment">-- 从第7个开始长度为6的子串，省略长度参数则取到末端</span>
+
+<span class="hljs-keyword">SELECT</span> LOCATE(<span class="hljs-string">&#x27;gar&#x27;</span>, <span class="hljs-string">&#x27;Kindergarden&#x27;</span>)  <span class="hljs-comment">-- 定位首次出现的位置，没有的话返回0，不区分大小写</span>
+
+<span class="hljs-keyword">SELECT</span> REPLACE(<span class="hljs-string">&#x27;Kindergarten&#x27;</span>, <span class="hljs-string">&#x27;garten&#x27;</span>, <span class="hljs-string">&#x27;garden&#x27;</span>)  <span class="hljs-comment">-- 替换</span>
+
+<span class="hljs-keyword">SELECT</span> CONCAT(f_name, <span class="hljs-string">&#x27; &#x27;</span>, l_name) <span class="hljs-keyword">AS</span> f_name <span class="hljs-keyword">FROM</span> customers  <span class="hljs-comment">-- 连接</span></code></pre></div>
+<ul>
+<li>处理时间日期的函数</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-comment">-- 当前时间日期对象</span>
+<span class="hljs-keyword">SELECT</span> NOW()  <span class="hljs-comment">-- 2021-08-27 08:50:46</span>
+<span class="hljs-keyword">SELECT</span> CURDATE()  <span class="hljs-comment">-- 2021-08-27</span>
+<span class="hljs-keyword">SELECT</span> CURTIME()  <span class="hljs-comment">-- 08:50:46</span>
+
+<span class="hljs-comment">-- 提取时间日期对象中的元素</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">YEAR</span>(NOW())  <span class="hljs-comment">-- 2021</span>
+
+<span class="hljs-keyword">SELECT</span> DAYNAME(NOW())  <span class="hljs-comment">-- Saturday</span>
+<span class="hljs-keyword">SELECT</span> MONTHNAME(NOW())  <span class="hljs-comment">-- September</span></code></pre></div>
+<ul>
+<li>日期格式化，格式说明符里，大小写是不同的，这是目前SQL里第一次出现大小写不同的情况</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> DATE_FORMAT(NOW(), <span class="hljs-string">&#x27;%M %d, %Y&#x27;</span>)  <span class="hljs-comment">-- September 12, 2020</span>
+<span class="hljs-keyword">SELECT</span> TIME_FORMAT(NOW(), <span class="hljs-string">&#x27;%H:%i %p&#x27;</span>)  <span class="hljs-comment">-- 11:07 AM</span></code></pre></div>
+<h1 id="SELECT-语句执行顺序"><a href="#SELECT-语句执行顺序" class="headerlink" title="SELECT 语句执行顺序"></a>SELECT 语句执行顺序</h1><p>其中每一个操作都会产生一张虚拟的表，这个虚拟的表作为一个处理的输入，只是这些虚拟的表对用户来说是透明的，只有最后一个虚拟的表才会被作为结果返回。 </p>
+<ol>
+<li>FORM：对表计算笛卡尔积，产生虚表VT1。</li>
+<li>ON：对虚表VT1进行ON筛选，只有那些符合<code>join-condition</code>的行才会被记录在虚表VT2中。</li>
+<li>JOIN：如果指定了OUTER JOIN（比如left join、 right join），那么保留表中未匹配的行就会作为外部行添加到虚拟表VT2中，产生虚拟表VT3, 如果from子句中包含两个以上的表的话，那么就会对上一个join连接产生的结果VT3和下一个表重复执行步骤1~3这三个步骤，一直到处理完所有的表为止。</li>
+<li>WHERE：对虚拟表VT3进行WHERE条件过滤。只有符合<code>where-condition</code>的记录才会被插入到虚拟表VT4中。</li>
+<li>GROUP BY：根据group by子句中的列，对VT4中的记录进行分组操作，产生VT5。</li>
+<li>HAVING：对虚拟表VT5应用having过滤，只有符合<code>having-condition</code>的记录才会被插入到虚拟表VT6中。</li>
+<li>SELECT：执行select操作，选择指定的列，插入到虚拟表VT7中。</li>
+<li>DISTINCT：对VT7中的记录进行去重。产生虚拟表VT8。</li>
+<li>ORDER BY: 将虚拟表VT8中的记录按照<order_by_list>进行排序操作，产生虚拟表VT9。</li>
+<li>LIMIT：取出指定行的记录，产生虚拟表VT10,并将结果返回。</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE41147KC?p=34">伟大的海伦君.SQL进阶教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/222865842">ASC2050.Mosh完全掌握SQL笔记</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/05/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">英语语法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">计算机网络面试</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"blogs-8gjs26956a49a40f","region":"ap-guangzhou","path":null},
+          {
+            el: '#twikoo',
+            path: ''
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.10.1/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
