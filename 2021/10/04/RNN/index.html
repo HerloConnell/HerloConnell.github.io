@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.9k 字
+      3k 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      35
        分钟
     </span>
   
@@ -441,18 +441,24 @@ u_j^i = v^Ttanh(W_1e_j + W_2d_i), j \in (1,...,n)
  \\
 p(C_i|C_1,...,C_{i-1},P) = softmax(u^i)
 \end{align}</script><p>可以看出，Ptr-Net直接将softmax之后得到的$a$作为输出，承担指向输入序列特定元素的指针角色。</p>
-<p class="note note-primary">
+<p><p class="note note-primary">
   <b>Ptr-Net如何解决TSP问题</b>
-</p>
-
-<p>待完善</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Christopher Olah.<a target="_blank" rel="noopener" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a>
+</p></p>
+<ol>
+<li>首先需要有数据</li>
+<li>模型</li>
+<li>把数据送到模型里</li>
+<li>config对参数进行一些配置</li>
+</ol>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>///</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Christopher Olah.<a target="_blank" rel="noopener" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>Sutskever I, Vinyals O, Le Q V. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1409.3215">Sequence to Sequence Learning with Neural Networks</a>[C]//Advances in neural information processing systems. 2014: 3104-3112.
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span>Cho K, Van Merriënboer B, Gulcehre C, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1406.1078">Learning phrase representations using RNN encoder-decoder for statistical machine translation</a>[J]. arXiv preprint arXiv:1406.1078, 2014.
 <a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>Guillaume Genthial, Lucas Liu, Barak Oshri, Kushal Ranjan. <a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1174/lecture_notes/cs224n-2017-notes6.pdf">CS224n: Natural Language Processing with Deep Learning </a>, 2017.
 <a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span>Bahdanau D, Cho K, Bengio Y. Bahdanau et al., 2014. <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1409.0473">Neural Machine Translation by Jointly Learning to Align and Translate</a>[J]. arXiv preprint arXiv:1409.0473, 2014.
 <a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span>Vinyals O, Fortunato M, Jaitly N. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1506.03134.pdf">Pointer networks</a>[J]. arXiv preprint arXiv:1506.03134, 2015.
-<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span>Bello I, Pham H, Le QV, Norouzi M, Bengio S. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1611.09940.pdf">Neural combinatorial optimization with reinforcement learning</a>. arXiv preprint arXiv:1611.09940. 2016 Nov 29.
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
             <hr>
             <div>
