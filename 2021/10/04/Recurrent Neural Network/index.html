@@ -345,7 +345,7 @@ y^{<t>} = g_{2} (W_{ya}a^{<t>} + b_{y})
 
 <p>一个句子中不同的单词，给予的关注度是不同的，如“the ball is on the field”，你会更关注”ball,” “on,” 和”field,”。因此， Bahdanau等人提出了一种解决方案<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="Bahdanau D, Cho K, Bengio Y. Bahdanau et al., 2014. Neural Machine Translation by Jointly Learning to Align and Translate[J]. arXiv preprint arXiv:1409.0473, 2014.
 ">[5]</span></a></sup>，其中设计的关键一点便是Attention机制。</p>
-<p><img src="https://i.loli.net/2021/10/16/OerqiZwXcBT4pan.png" srcset="/img/loading.gif" lazyload alt="由给定的输入序列x生成t时刻的输出y" style="zoom:100%;" /></p>
+<p><img src="https://i.loli.net/2021/10/16/OerqiZwXcBT4pan.png" srcset="/img/loading.gif" lazyload alt="由给定的输入序列x生成t时刻的输出y" style="zoom:70%;" /></p>
 <p>首先是编码器，使用bi-LSTM结构，设编码器隐藏层输出为$(h_1,…,h_n)$。</p>
 <p>其次是解码器，这里与之前的大有不同，设$s_i$为$i$时刻隐藏层输出 (隐状态) ，其计算方法如下：</p>
 <script type="math/tex; mode=display">
