@@ -264,14 +264,22 @@ y^{<t>} = g_{2} (W_{ya}a^{<t>} + b_{y})
 </tbody>
 </table>
 </div>
-<p>为了应用在不同的场景，RNN也会有不同的结构：</p>
-<p><strong>输入不是序列而输出为序列，如根据类别产生音乐</strong></p>
+<p>面对不同的应用场景，RNN拥有多种结构：</p>
+<ul>
+<li><strong>输入不是序列而输出为序列，如根据类别产生音乐</strong></li>
+</ul>
 <p><img src="https://i.loli.net/2021/10/16/w3YJghbM74sezoZ.png" srcset="/img/loading.gif" lazyload alt="$T_x$ = 1, $T_y$ > 1" style="zoom:50%;" /></p>
-<p><strong>输入是序列而输出不是序列，如情感分析</strong></p>
+<ul>
+<li><strong>输入是序列而输出不是序列，如情感分析</strong></li>
+</ul>
 <p><img src="https://i.loli.net/2021/10/16/nZFBRSwj9J37LeD.png" srcset="/img/loading.gif" lazyload alt="$T_x > 1$, $T_y = 1$" style="zoom:50%;" /></p>
-<p><strong>输入是序列而输出也是序列，且等长，传统RNN结构</strong></p>
+<ul>
+<li><strong>输入是序列而输出也是序列，且等长，传统RNN结构</strong></li>
+</ul>
 <p><img src="https://i.loli.net/2021/10/16/wF75QY4ckRxPLnW.png" srcset="/img/loading.gif" lazyload alt="$T_x$ = $T_y$" style="zoom:50%;" /></p>
-<p><strong>输入是序列而输出也是序列，且不等长，如下文我们提到的encoder-decoder模型</strong></p>
+<ul>
+<li><strong>输入是序列而输出也是序列，且不等长，如下文我们提到的encoder-decoder模型</strong></li>
+</ul>
 <p><img src="https://i.loli.net/2021/10/16/EAG3NZawTtbgQm2.png" srcset="/img/loading.gif" lazyload alt="$T_x$ != $T_y$" style="zoom:50%;" /></p>
 <h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><p>RNN结构十分简单，但参数矩阵 U 和 W 的梯度均存在长期依赖，当面对一个长序列的时候，由于梯度消失/爆炸，RNN难以发挥作用。1997年，Hochreiter &amp; Schmidhuber提出一种RNN的变种LSTMs(Long Short Term Memory networks)，尝试解决长期依赖的问题。</p>
 <blockquote>
