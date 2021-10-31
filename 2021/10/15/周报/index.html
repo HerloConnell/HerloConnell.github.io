@@ -182,7 +182,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      73 字
+      473 字
     </span>
   
 
@@ -192,7 +192,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      5
        分钟
     </span>
   
@@ -234,6 +234,30 @@
 <li>完成上周RNN的笔记</li>
 <li>再次尝试复现ptr-net</li>
 </ol>
+<p class="note note-primary">
+  <b>10.16～10.25</b>
+</p>
+
+<p>花费了几天的时间看<a target="_blank" rel="noopener" href="https://github.com/shirgur/PointerNet">github ptr-net pytorch</a>，难以推进下去，主要原因是attention的细节了解不足。在22号时找到<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1508.04025.pdf">Effective Approaches to Attention-based Neural Machine Translation</a>之后终于豁然开朗，到25号下午为止刚完成模型代码的debug，暂未进行实验。</p>
+<p>在复现过程中，遇到的值得注意的一点就是：pytorch在反向传播的过程中，不允许需要梯度计算的参数进行就地操作inplace operation，否则会报错：</p>
+<div class="code-wrapper"><pre><code class="hljs text">one of the variables needed for gradient computation has been modified by an inplace operation: [torch.FloatTensor [4, 6]], which is output 0 of SoftmaxBackward, is at version 1; expected version 0 instead. 
+Hint: the backtrace further above shows the operation that failed to compute its gradient. The variable in question was changed in there or anywhere later. Good luck!</code></pre></div>
+<p>常见的会犯错误的就地操作有</p>
+<ul>
+<li><code>x += 1</code></li>
+<li><code>alpha[visted] = 0</code></li>
+</ul>
+<p>由于是25号下午刚发现的bug，对于<code>就地操作</code>还有待进一步总结。</p>
+<p>接下来的计划是，首先继续进行ptrnet的实验，查看模型复现效果，然后根据模型复现及实验中遇到的细节问题完善笔记。</p>
+<p class="note note-primary">
+  <b>10.26～10.31</b>
+</p>
+
+<p>这周进度有点慢了，总结如下：</p>
+<p>10.26~10.27，由于理发师的一些过失，效率很低，以后应该及时调整心态；</p>
+<p>10.28～10.29，尝试跑了代码，平均loss较高，在1左右，之后询问了师兄师姐如何调整参数，看了”ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!”的一点开头，写了一部分blog，没有写完；</p>
+<p>10.30~10.31，参与了CCPC；</p>
+<p>今晚之前把blog赶完吧。</p>
 
             </div>
             <hr>
@@ -265,7 +289,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/10/04/Recurrent%20Neural%20Network/">
+                      <a href="/2021/10/04/FromRNNtoPointerNetwork/">
                         <span class="hidden-mobile">From RNN to Pointer Network</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
