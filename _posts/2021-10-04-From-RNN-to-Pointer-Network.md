@@ -4,7 +4,7 @@ title: From RNN to Pointer Network
 date: 2021-10-04 17:44
 comments: true
 external-url:
-categories: ML
+categories: MachineLearning
 ---
 
 从基础的RNN网络结构开始，介绍LSTM、Encoder-Decoder、Attention Mechanism、Pointer Network。
@@ -34,7 +34,7 @@ $$
 
 <img src="https://i.loli.net/2021/10/16/mYIvgnV59NKoPXB.png">
 
-损失函数$\mathcal{L}$  定义为各时刻$\mathcal{L}$ 之和，每一时刻$t$都将进行：计算loss，计算偏导数，更新网络参数
+　损失函数$\mathcal{L}$  定义为各时刻$\mathcal{L}$ 之和，每一时刻$t$都将进行：计算loss，计算偏导数，更新网络参数
 
 
 $$
@@ -46,7 +46,7 @@ $$
 
 这样一个基础的RNN结构，隐藏层的存在让他拥有“记忆”的能力，当然它也存在一些不足。
 
-| 😆                                                        | 😭                |
+| :-)                                                      | :-(              |
 | -------------------------------------------------------- | ---------------- |
 | 输入序列长度可变，模型size不会随着输入序列长度增加而增加 | 计算缓慢         |
 | “记忆”历史信息                                           | 长期记忆能力不足 |
