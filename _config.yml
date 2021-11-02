@@ -1,0 +1,33 @@
+# Site settings
+title: "On Machine Learning, Computer Basics and Life"
+author: "Li Han"
+
+description: "This is a blog about machine learning, some computer basics and my daily life. Not necessarily in that order."
+
+keywords: "Software Engineering, Mathematics, Philosophy, Scala, Epistemology, Existentialism, Programming, Machine-Learning, Artificial Intelligence, Statistics, Probability, Puzzles"
+
+biography: "A senior student who majoring in computer science, I research in reinforcement learning and multi-objective optimization."
+
+colophon: "© MMXIII — MMXX by Li Han.<br>Content available under <a href='http://creativecommons.org/licenses/by-nc-sa/4.0/''>Creative Commons (BY-NC-SA)</a> unless otherwise noted.<br>This site is hosted at <a href='https://pages.github.com/''>Github Pages</a> and created with <a href='http://jekyllrb.com/'>Jekyll</a> and <a href='http://getbootstrap.com'>Bootstrap</a>."
+
+baseurl: ""
+url: "https://herloconnell.github.io"
+
+
+email: herloconnell@gmail.com
+# twitter_username: ferreira_hugo
+github_username: HerloConnell
+# linkedin_username: hugoserenoferreira
+# facebook_username: hugo.sereno.ferreira
+# instagram_username: hugo.sereno.ferreira
+# 500px_username: hugoserenoferreira
+
+google-analytics: UA-69060-5
+
+simple_search: http://google.com/search
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:title/
+
+gems:
+- jekyll-sitemap
