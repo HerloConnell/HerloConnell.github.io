@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An Introduction to Reinforcement Learning
-date: 2021-08-03 17:51
+date: 2021-11-07 17:51
 comments: true
 external-url:
 categories: MachineLearning
