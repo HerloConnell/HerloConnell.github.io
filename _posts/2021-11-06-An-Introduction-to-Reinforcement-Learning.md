@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: draft
 title: An Introduction to Reinforcement Learning
 date: 2021-11-07 17:51
 comments: true
