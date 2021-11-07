@@ -1,5 +1,5 @@
 ---
-layout: draft
+layout: post
 title: An Introduction to Reinforcement Learning
 date: 2021-11-07 17:51
 comments: true
@@ -10,8 +10,6 @@ categories: MachineLearning
 > 未完成
 
 ## Markov Decision Processes
-
-> 内容参考自Stanford公开课CS221[Lecture 7: Markov Decision Processes - Value Iteration](https://www.youtube.com/watch?v=9g32v7bK3Co)
 
 **MDP问题**
 
