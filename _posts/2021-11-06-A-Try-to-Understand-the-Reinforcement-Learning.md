@@ -516,7 +516,7 @@ Deep Q-Network[^2] (Mnih el. 2015)在解决上述问题上作出了突出贡献�
 
 ### Policy Gradient
 
-
+> 待完成
 
 [^1]: [Stanford CS221: AI (Autumn 2019)](https://www.youtube.com/user/stanfordonline) by Stanford University on YouTube.
 [^2]: Mnih V, Kavukcuoglu K, Silver D, et al. [Human-level control through deep reinforcement learning](https://web.stanford.edu/class/psych209/Readings/MnihEtAlHassibis15NatureControlDeepRL.pdf)[J]. nature, 2015, 518(7540): 529-533.
