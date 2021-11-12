@@ -90,7 +90,7 @@ article {
     font-weight: $base-font-weight;
   }
 
-  > :first-child {
+  > :first-child:not(#markdown-toc) {
     min-height: 2em + $base-line-height;
 
     &::first-letter {
@@ -124,23 +124,23 @@ article {
     margin-bottom: 1em;
   }
 
-  ol, ul {
-    @media (max-width: 768px) {
-      padding-left: 1.1rem;
-    }
+  // ol, ul {
+  //   @media (max-width: 768px) {
+  //     padding-left: 1.1rem;
+  //   }
 
-    @media (min-width: 768px) {
-      padding-left: 0;
-    }
-  }
+  //   @media (min-width: 768px) {
+  //     padding-left: 0rem;
+  //   }
+  // }
 
   ul > li::before {
-    position: absolute;
+    //position: absolute;
     content: '▪';
     color: $alt-color;
 
     @media (min-width: 572px) {
-      left: -1.15em;
+      padding-right: -3rem;
     }
   }
 
