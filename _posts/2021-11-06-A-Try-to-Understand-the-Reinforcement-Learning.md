@@ -466,7 +466,7 @@ $$
 
 可以将$\hat{Q_{opt}}(s, a, \mathbf{w}) - (r + \gamma \hat{V_{opt}}(s^{\prime }))$视作计算残差，$\phi (s,a)$帮助我们将属于$\hat{Q_{opt}}(s, a, \mathbf{w})$的残差宽度拓展到$\mathbf{w}$，$\eta$为步长。
 
-通常使用深度学习模型模拟$Q$值，我们称之为$Q\text{-}network$。以一个经典Atari游戏`Breakout`为例 (图源自[Stanford CS230](https://www.youtube.com/watch?v=NP2XqpgTJyo))：
+通常使用深度学习模型模拟$Q$值，我们称之为$Q\text{-}network$。以一个经典Atari游戏`Breakout`为例 (图源自Stanford公开课[^1])：
 
 <img src="{{ '/assets/imgs/12.png' | relative_url }}" style="zoom:40%;">
 
