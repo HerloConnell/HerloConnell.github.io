@@ -66,5 +66,19 @@ Hint: the backtrace further above shows the operation that failed to compute its
 
 接下来：了解强化学习之后再去看看ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!
 
-## 11.8～？
+## 11.8～11.14
+
+强化学习基础
+
+## 11.15～11.21
+
+本周因为大作业的事情，进度又比较少；
+
+顺着上周继续看了一点点强化学习，看了transformer，把ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的网络模型看懂了；
+
+下周想：看一下A3C、2OPT，看一下ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的代码。
+
+
+
+
 
