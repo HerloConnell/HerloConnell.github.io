@@ -21,5 +21,3 @@ I think I am such a person, in the eyes of different people I have some differen
 
 Today, my boss let me to know about a very outstanding student, I think, wow, a boy/gril who age around me can do this, he's so admirable . Long time ago, I am in a env that I am, I can called, a student who is outstanding, but today I think, I should take a long-term view, I should take no effort to do my search! 
 
-**11.17**
-

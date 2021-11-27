@@ -74,9 +74,9 @@ Hint: the backtrace further above shows the operation that failed to compute its
 
 本周因为大作业的事情，进度又比较少；
 
-顺着上周继续看了一点点强化学习，看了transformer，把ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的网络模型看懂了；
+顺着上周继续看了一点点强化学习（因为论文里提到了基线），看了transformer（因为论文里提到了transformer），把ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的网络模型看懂了；
 
-下周想：看一下A3C、2OPT，看一下ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的代码。
+下周想：看一下A3C、2OPT、禁忌搜索，看一下ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的代码。
 
 
 
