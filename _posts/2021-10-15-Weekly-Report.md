@@ -7,7 +7,7 @@ external-url:
 categories: Others
 ---
 
-> my daily lift.
+> my daily life.
 
 ## 10.9～10.15
 
@@ -77,6 +77,38 @@ Hint: the backtrace further above shows the operation that failed to compute its
 顺着上周继续看了一点点强化学习（因为论文里提到了基线），看了transformer（因为论文里提到了transformer），把ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的网络模型看懂了；
 
 下周想：看一下A3C、2OPT、禁忌搜索，看一下ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!的代码。
+
+## 11.22～11.28
+
+|                                                 |                                                              |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| Actor-C                                         | ✅                                                            |
+| 禁忌搜索                                        | ✅                                                            |
+| 2 OPT 搜索解决TSP问题                           | ✅                                                            |
+| ATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!源码 | 看了50%？未完成                                              |
+| 2017，2018，2019 PtrNet，改进思路               | 仅阅读了2017的那篇                                           |
+| Attention的总结                                 | 找了一些资料结合老师的，有非常优秀的两篇文章(https://blog.csdn.net/malefactor/article/details/78767781)以及(https://distill.pub/2016/augmented-rnns/#adaptive-computation-time)，有感悟，还没来得及写一些东西 |
+
+下周
+
+整理文件，大概看一下ADAM、BatchNorm，代码自己找时间掌握
+
+1. attention先总结完
+2. 把transformer后面学习一下，用到的主要模型可以学习下，从NLP到组合优化
+3. 2017，2018，2019 PtrNet，改进思路
+4. 基于ptr net的总结完，可以总结下基于transformer attention的
+
+## 11.29～12.18
+
+在这半个月时间，没有与老师及时联系。
+
+大概在11.29～12.5总结完了attention，尝试学习transformer的过程中发现需要学习pre-training的相关知识，由于transforme并没有学完想着下周一起交周报（结果下周也没交。。。）；
+
+在12.5～12.9尝试对pre-training进行总结，12.10兼职结束了，买了回家的票并打算出去玩几天（又不交周报！）；
+
+于12.17回到家中，计划在12.19党组织考试之后，用三天时间为前段时间的学习画上句号。更新完blog之后，开始了解毕业论文选题方向的知识。
+
+
 
 
 

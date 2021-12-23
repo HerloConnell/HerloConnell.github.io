@@ -17,7 +17,7 @@ categories: MachineLearning
 
 在学习一些算法如状压DP时，有这样的思想：目标解存在于状态空间中，我们从目前的**“状态”**，做出一定的**“动作”**，转移到下一个状态，直到搜到我们希望的最终解。
 
-<img src="{{ '/assets/imgs/1.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/1.png' | relative_url }}" style="zoom:50%;">
 
 考虑电车问题：
 
@@ -33,7 +33,7 @@ Markov Decision Processes (MDP)在上面问题的基础上，引入了**不确�
 >
 > 如何用最短的时间从 $1$ 到 $n$ ？ 
 
-<img src="{{ '/assets/imgs/2.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/2.png' | relative_url }}" style="zoom:50%;">
 
 对于该类问题，形式化的表述如下：
 
@@ -67,7 +67,7 @@ $$
 
 对该问题的状态转移关系可视化即为：
 
-<img src="{{ '/assets/imgs/3.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/3.png' | relative_url }}" style="zoom:50%;">
 
 上图中，蓝色节点代表状态节点$s$，引出的蓝色边代表做出的动作$a$，橘色代表`choice node`，引出的橘色边代表$s,a$可能的转移；在`in`状态，选择动作`stay`将转移到概率节点`(in, stay)`，该节点展示有 $T(in, stay, in)$ = 0.6的概率到达状态节点`in`，并获$Reward(in, stay, in)$ = 4，有 $T(in, stay, end)$ = 0.4的概率转移到`end`终态，并获得 $Reward(in, stay, in)$ = 5。
 
@@ -75,7 +75,7 @@ $$
 
 对于确定性问题，最终解为一个最终的答案序列 (如走路 - 电车 - 电车 - 电车 - 走路)；当面对MDP问题时，情况可能更复杂一些，我们需要的解不再是一个序列，而是一组策略 $\pi $ : $s \Rightarrow a$的映射，其中 $s \in States$，$a \in Action(s)$ 。即对于每一个状态$s$，我们可以使用$\pi(s)$指该步的动作。
 
-<img src="{{ '/assets/imgs/4.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/4.png' | relative_url }}" style="zoom:50%;">
 
 **求解**
 
@@ -99,11 +99,11 @@ $$
 
 当位于状态$s$时，对于策略$\pi(s)$，由于不确定性$\pi(s)$将引出许多path
 
-<img src="{{ '/assets/imgs/5.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/5.png' | relative_url }}" style="zoom:50%;">
 
 定义$V_\pi(s)$为从$s$状态开始执行策略$\pi(s)$的期望收益，$Q_\pi(s, a)$为概率节点$(s, a)$的期望收益，即多个path的utility期望值。
 
-<img src="{{ '/assets/imgs/6.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/6.png' | relative_url }}" style="zoom:50%;">
 
 可以得出以下的等式(Bellman, 1957)：
 
@@ -166,7 +166,7 @@ $$
 
 定义$V_{opt}(s)$为从$s$状态开始的最大期望收益，$Q_{opt}(s, a)$为概率节点$(s, a)$的最大期望收益，有
 
-<img src="{{ '/assets/imgs/7.png' | relative_url }}" style="zoom:45%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/7.png' | relative_url }}" style="zoom:45%;">
 
 $$
 V_{opt}(s) = 
@@ -260,7 +260,7 @@ $$
 
 为了获得关于环境的信息，我们的代理 (agent) 需要主动的做出一些动作，获得环境 (environment) 对我们的反馈，继续进行下一次动作
 
-<img src="{{ '/assets/imgs/8.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/8.png' | relative_url }}" style="zoom:50%;">
 
 ### Monte-Carlo methods
 
@@ -278,7 +278,7 @@ $$
 
 考虑上文提到过的赌钱游戏
 
-<img src="{{ '/assets/imgs/9.png' | relative_url }}" style="zoom:45%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/9.png' | relative_url }}" style="zoom:45%;">
 
 假设遵循策略$\pi$，我们有如下一些探索序列 (${\color{RED}{s_0}};a_1, r_1, {\color{RED}{s_1}};a_2, r_2, {\color{RED}{s_2}};\dots; a_n, r_n, {\color{RED}{s_n}}$)：
 
@@ -290,7 +290,7 @@ $$
 
 那么我们可以有如下的估计
 
-<img src="{{ '/assets/imgs/10.png' | relative_url }}" style="zoom:45%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/10.png' | relative_url }}" style="zoom:45%;">
 
 目前为止可以看到一个明显的问题：如果$s \neq \pi(s)$，我们永远无法到达$(s, a)$ ；就上面的序列来说，我们无法预估$\hat{Q}_\pi(in, quit)$ 。同其他机器学习不同，强化学习的**“探索”**显得尤为重要：强化学习需要尽可能的探索到状态空间，而其他机器学习已经拥有了足够描述状态空间的数据集。
 
@@ -334,7 +334,7 @@ $$
 $$
 
 
-<img src="{{ '/assets/imgs/11.png' | relative_url }}" style="zoom:45%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/11.png' | relative_url }}" style="zoom:45%;">
 
 更形式化地来描述求得平均值的过程即为：
 
@@ -466,9 +466,9 @@ $$
 
 通常使用深度学习模型模拟$Q$值，我们称之为$Q\text{-}network$。以一个经典Atari游戏`Breakout`为例 (图源自Stanford公开课[^1])：
 
-<img src="{{ '/assets/imgs/12.png' | relative_url }}" style="zoom:40%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/12.png' | relative_url }}" style="zoom:40%;">
 
-<img src="{{ '/assets/imgs/13.png' | relative_url }}" style="zoom:30%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/13.png' | relative_url }}" style="zoom:30%;">
 
 在此学习任务中，我们的目标是用一个小球消除所有的彩色砖块，以预处理过的像素 (如转换为灰度值图像，图像裁剪，合并连续几帧作为一次输入)作为输入，经过$Q\text{-}network$得到各特征值，
 
@@ -518,7 +518,7 @@ $$
 
 算法的伪代码描述如下：
 
-<img src="{{ '/assets/imgs/14.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/14.png' | relative_url }}" style="zoom:50%;">
 
 > 对DQN的优化如double DQN等，待补充
 
@@ -777,7 +777,7 @@ $$
 
 我们用$ G_t $代替了$Q_t$ ，但这种做法存在着一些问题：
 
-<img src="{{ '/assets/imgs/15.png' | relative_url }}" style="zoom:50%;">
+<img src="{{ '/assets/imgs/An-Introduction-to-Reinforcement-Learning/15.png' | relative_url }}" style="zoom:50%;">
 
 *(图源自[CS 294-112: Deep Reinforcement Learning. Sergey Levine](http://rail.eecs.berkeley.edu/deeprlcourse-fa17/f17docs/lecture_5_actor_critic_pdf))*
 
