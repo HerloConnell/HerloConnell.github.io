@@ -456,7 +456,7 @@ $$
 > 
 > $$
 > \begin{align}
-> & on\ each ({\color{Orange}{s, a, r, s^{\prime }} } ): \notag
+> & on\ each (  {\color{Orange}{s, a, r, s^{\prime }} } ): \notag
 > \\
 > & \ \ \ \mathbf{w} \gets  \mathbf{w} -  \eta[{\color{red}{\hat{Q}_{opt}(s, a, \mathbf{w})}} - {\color{green}{(r + \gamma \hat{V}_{opt}(s^{\prime }))}}]\phi (s,a)  \notag
 > \end{align}
