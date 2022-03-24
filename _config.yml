@@ -31,3 +31,6 @@ permalink: /blog/:title/
 
 gems:
 - jekyll-sitemap
+
+plugins:
+  - jekyll-feed
