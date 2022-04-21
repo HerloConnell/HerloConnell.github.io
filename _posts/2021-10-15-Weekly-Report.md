@@ -4,7 +4,7 @@ title: Weekly Report
 date: 2021-10-15 11:29
 comments: true
 external-url:
-categories: Others
+categories: Logs
 ---
 
 > my daily life.

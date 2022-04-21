@@ -4,7 +4,7 @@ title: The Diary of My Life
 date: 2021-11-08 10:11
 comments: true
 external-url:
-categories: Others
+categories: Logs
 ---
 
 > my daily lift.
